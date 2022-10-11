@@ -3,6 +3,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
    
+   
    <!-- configs -->
    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -33,6 +34,7 @@
    <!-- controllers -->
    <bean id="indexController" class="joa.controller.IndexController"></bean>
    <bean id="joaStoreController" class="joa.controller.JoaStoreController"></bean>
+   <bean id="hiController" class="joa.controller.HiController"></bean>
 
    
    <!-- daos -->

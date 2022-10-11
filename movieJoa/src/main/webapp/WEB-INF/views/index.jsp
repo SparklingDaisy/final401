@@ -18,6 +18,7 @@
 		<div name="fnb">스토어상품</div>
 		<div name="notice">공지사항</div>
 		<div name="helpDesk">고객센터</div>
+		<a href="hi.do">hi.do</a>
 	</article>
 </section>
 <c:import url="footer.jsp"></c:import>
