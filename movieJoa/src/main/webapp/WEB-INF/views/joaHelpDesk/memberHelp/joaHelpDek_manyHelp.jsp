@@ -24,13 +24,13 @@
 	<br>
 	<div class="box">
 		<ul class="manyHelpSerchBarFeild">
-			<li class="menuli"><a class="a" href="helpDesk.do" style="${color}">전체</a></li>
-			<li class="menuli"><a class="b" href="#" style="${color}">예매/매표</a></li>
-			<li class="menuli"><a class="c" href="#" style="${color}">결제수단</a></li>
-			<li class="menuli"><a class="d" href="#" style="${color}">포인트/쿠폰</a></li>
-			<li class="menuli"><a class="e" href="#" style="${color}">할인혜택</a></li>
-			<li class="menuli"><a class="f" href="#" style="${color}">스토어샵</a></li>
-			<li class="menuli"><a class="g" href="#" style="${color}">홈페이지</a></li>
+			<li class="menuli"><a class="a" href="helpDesk.do">전체</a></li>
+			<li class="menuli"><a class="a" href="#">예매/매표</a></li>
+			<li class="menuli"><a class="a" href="#">결제수단</a></li>
+			<li class="menuli"><a class="a" href="#">포인트/쿠폰</a></li>
+			<li class="menuli"><a class="a" href="#">할인혜택</a></li>
+			<li class="menuli"><a class="a" href="#">스토어샵</a></li>
+			<li class="menuli"><a class="a" href="#">홈페이지</a></li>
 		</ul>
 	</div>
 	<br>
