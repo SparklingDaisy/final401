@@ -17,4 +17,10 @@ public interface JoaNoticeDAO {
 	public List<JoaNoticeDTO> serchNoticeList(String keyword, Map map);
 	
 	public JoaNoticeDTO noticeBorder(int idx);
+	
+	public int noticeTotalCnt();
+	
+	public int serchNoticeTotalCnt(Map map);
+	
+	public int noticeTypeTotalCnt(Map map);
 }

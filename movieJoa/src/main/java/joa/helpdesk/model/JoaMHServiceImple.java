@@ -41,7 +41,7 @@ public class JoaMHServiceImple implements JoaMHService {
 	}
 
 	@Override
-	public List<JoaManyHelpDTO> serchManyHelpList(String type,int cp, int ls) {
+	public List<JoaManyHelpDTO> manyHelpType(String type,int cp, int ls) {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map map = new HashMap();
@@ -58,7 +58,7 @@ public class JoaMHServiceImple implements JoaMHService {
 	}
 	
 	@Override
-	public List<JoaManyHelpDTO> manyHelpType(String keyword,int cp, int ls) {
+	public List<JoaManyHelpDTO> serchManyHelpList(String keyword,int cp, int ls) {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map map = new HashMap();
@@ -66,6 +66,26 @@ public class JoaMHServiceImple implements JoaMHService {
 		map.put("end", end);
 		List<JoaManyHelpDTO> list = JoaManyHelpDao.manyHelpType(keyword, map);
 		return list;
+	}
+	
+	@Override
+	public int manyHelpListTotalCnt() {
+		int count = JoaManyHelpDao.manyHelpListTotalCnt();
+		return 0;
+	}
+	@Override
+	public int serchManyHelpListTotalCnt(String keyword) {
+		Map map = new HashMap();
+		map.put("keyword", keyword);
+		int count = JoaManyHelpDao.serchManyHelpListTotalCnt(map);
+		return count;
+	}
+	@Override
+	public int manyHelpTypeTotalCnt(String type) {
+		Map map = new HashMap();
+		map.put("type", type);
+		int count = JoaManyHelpDao.manyHelpTypeTotalCnt(map);
+		return count;
 	}
 
 }

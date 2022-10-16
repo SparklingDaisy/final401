@@ -17,4 +17,10 @@ public interface JoaNTService {
 	public List<JoaNoticeDTO> serchNoticeList(String keyword,int cp, int ls);
 	
 	public JoaNoticeDTO noticeBorder(int idx);
+	
+	public int noticeTotalCnt();
+	
+	public int serchNoticeTotalCnt(String type);
+	
+	public int noticeTypeTotalCnt(String keyword);
 }

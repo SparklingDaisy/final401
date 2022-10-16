@@ -17,4 +17,10 @@ public interface JoaMHService {
 	public List<JoaManyHelpDTO> manyHelpType(String keyword,int cp, int ls);
 	
 	public JoaManyHelpDTO ManyHelpBorder(int idx);
+	
+	public int manyHelpListTotalCnt();
+	
+	public int manyHelpTypeTotalCnt(String type);
+	
+	public int serchManyHelpListTotalCnt(String keyword);
 }

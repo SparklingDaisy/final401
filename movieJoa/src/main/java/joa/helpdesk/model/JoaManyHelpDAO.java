@@ -12,9 +12,15 @@ public interface JoaManyHelpDAO {
 	
 	public List<JoaManyHelpDTO> ManyHelpList(Map map);
 	
-	public List<JoaManyHelpDTO> serchManyHelpList(String type, Map map);
+	public List<JoaManyHelpDTO> manyHelpType(String type, Map map);
 	
-	public List<JoaManyHelpDTO> manyHelpType(String keyword, Map map);
+	public List<JoaManyHelpDTO> serchManyHelpList(String keyword, Map map);
 	
 	public JoaManyHelpDTO ManyHelpBorder(int idx);
+	
+	public int manyHelpListTotalCnt();
+	
+	public int serchManyHelpListTotalCnt(Map map);
+	
+	public int manyHelpTypeTotalCnt(Map map);
 }

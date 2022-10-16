@@ -67,4 +67,24 @@ public class JoaNTServiceImple implements JoaNTService {
 		List<JoaNoticeDTO> list = JoaNoticeDao.noticeType(type, map);
 		return list;
 	}
+	
+	@Override
+	public int noticeTotalCnt() {
+		int count = JoaNoticeDao.noticeTotalCnt();
+		return count;
+	}
+	@Override
+	public int serchNoticeTotalCnt(String keyword) {
+		Map map = new HashMap();
+		map.put("keyword", keyword);
+		int count = JoaNoticeDao.serchNoticeTotalCnt(map);
+		return count;
+	}
+	@Override
+	public int noticeTypeTotalCnt(String type) {
+		Map map = new HashMap();
+		map.put("type", type);
+		int count = JoaNoticeDao.noticeTypeTotalCnt(map);
+		return count;
+	}
 }

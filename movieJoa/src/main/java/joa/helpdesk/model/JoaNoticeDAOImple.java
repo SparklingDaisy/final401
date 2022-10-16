@@ -60,5 +60,23 @@ public class JoaNoticeDAOImple implements JoaNoticeDAO {
 		JoaNoticeDTO dto = sqlMap.selectOne("NoticeBorder",idx);
 		return dto;
 	}
+	
+	@Override
+	public int noticeTotalCnt() {
+		int count = sqlMap.selectOne("NoticeListTotalCnt");
+		return count;
+	}
+	
+	@Override
+	public int noticeTypeTotalCnt(Map map) {
+		int count = sqlMap.selectOne("NoticeTypeTotalCnt", map);
+		return count;
+	}
+	
+	@Override
+	public int serchNoticeTotalCnt(Map map) {
+		int count = sqlMap.selectOne("SerchNoticeListTotalCnt", map);
+		return count;
+	}
 
 }
