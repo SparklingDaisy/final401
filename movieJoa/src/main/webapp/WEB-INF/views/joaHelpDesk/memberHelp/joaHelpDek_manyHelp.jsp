@@ -20,17 +20,19 @@
 	<div class="manyHelpIntroduce">회원님들께서 가장 자주하시는 질문을 모았습니다.<br>
 	궁금하신 내용에 대해 검색해보세요</div>
 	<br>
-	<div class="manyHelpSerch"><input class="serchbar" type="text" name="type">&nbsp;<input class="button" type="button" value="검색하기">&nbsp;&nbsp;추천 검색어 | 현금영수증 | 관람권 | 결제 | 예매</div>
+	<form name="manyHelpSerchFM" action="manyHelpSerch.do">
+	<div class="manyHelpSerch"><input class="serchbar" type="text" name="keyword">&nbsp;<input class="button" type="submit" value="검색하기">&nbsp;&nbsp;추천 검색어 | 현금영수증 | 관람권 | 결제 | 예매</div>
+	</form>
 	<br>
 	<div class="box">
 		<ul class="manyHelpSerchBarFeild">
-			<li class="menuli"><a class="a" href="helpDesk.do">전체</a></li>
-			<li class="menuli"><a class="a" href="#">예매/매표</a></li>
-			<li class="menuli"><a class="a" href="#">결제수단</a></li>
-			<li class="menuli"><a class="a" href="#">포인트/쿠폰</a></li>
-			<li class="menuli"><a class="a" href="#">할인혜택</a></li>
-			<li class="menuli"><a class="a" href="#">스토어샵</a></li>
-			<li class="menuli"><a class="a" href="#">홈페이지</a></li>
+			<li class="menuli"><a style="${backA_color}"class="a" href="manyHelp.do">전체</a></li>
+			<li class="menuli"><a style="${backB_color}"class="a" href="serchManyHelp.do?type=예매/매표">예매/매표</a></li>
+			<li class="menuli"><a style="${backC_color}"class="a" href="serchManyHelp.do?type=결제수단">결제수단</a></li>
+			<li class="menuli"><a style="${backD_color}"class="a" href="serchManyHelp.do?type=포인트/쿠폰">포인트/쿠폰</a></li>
+			<li class="menuli"><a style="${backE_color}"class="a" href="serchManyHelp.do?type=할인혜택">할인혜택</a></li>
+			<li class="menuli"><a style="${backF_color}"class="a" href="serchManyHelp.do?type=스토어샵">스토어샵</a></li>
+			<li class="menuli"><a style="${backG_color}"class="a" href="serchManyHelp.do?type=홈페이지">홈페이지</a></li>
 		</ul>
 	</div>
 	<br>

@@ -30,14 +30,24 @@ public class JoaNTServiceImple implements JoaNTService {
 	}
 
 	@Override
-	public List<JoaNoticeDTO> NoticeList() {
-		List<JoaNoticeDTO> list = JoaNoticeDao.NoticeList();
+	public List<JoaNoticeDTO> NoticeList(int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaNoticeDTO> list = JoaNoticeDao.NoticeList(map);
 		return list;
 	}
 
 	@Override
-	public List<JoaNoticeDTO> serchNoticeList(String type) {
-		List<JoaNoticeDTO> list = JoaNoticeDao.serchNoticeList(type);
+	public List<JoaNoticeDTO> serchNoticeList(String keyword, int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaNoticeDTO> list = JoaNoticeDao.serchNoticeList(keyword,map);
 		return list;
 	}
 
@@ -46,5 +56,15 @@ public class JoaNTServiceImple implements JoaNTService {
 		JoaNoticeDTO dto = JoaNoticeDao.noticeBorder(idx);
 		return dto;
 	}
-
+	
+	@Override
+	public List<JoaNoticeDTO> noticeType(String type, int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaNoticeDTO> list = JoaNoticeDao.noticeType(type, map);
+		return list;
+	}
 }

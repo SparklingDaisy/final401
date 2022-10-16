@@ -10,9 +10,11 @@ public interface JoaNoticeDAO {
 	
 	public int rewriteNotice(JoaNoticeDTO dto);
 	
-	public List<JoaNoticeDTO> NoticeList();
+	public List<JoaNoticeDTO> NoticeList(Map map);
 	
-	public List<JoaNoticeDTO> serchNoticeList(String type);
+	public List<JoaNoticeDTO> noticeType(String type, Map map);
+	
+	public List<JoaNoticeDTO> serchNoticeList(String keyword, Map map);
 	
 	public JoaNoticeDTO noticeBorder(int idx);
 }

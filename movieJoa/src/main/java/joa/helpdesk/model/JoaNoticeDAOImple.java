@@ -38,14 +38,20 @@ public class JoaNoticeDAOImple implements JoaNoticeDAO {
 	}
 
 	@Override
-	public List<JoaNoticeDTO> NoticeList() {
+	public List<JoaNoticeDTO> NoticeList(Map map) {
 		List<JoaNoticeDTO> list = sqlMap.selectList("NoticeList");
-		return null;
+		return list;
 	}
 
 	@Override
-	public List<JoaNoticeDTO> serchNoticeList(String type) {
-		List<JoaNoticeDTO> list = sqlMap.selectList("SerchNoticeList",type);
+	public List<JoaNoticeDTO> noticeType(String type, Map map) {
+		List<JoaNoticeDTO> list = sqlMap.selectList("NoticeType",type);
+		return list;
+	}
+	
+	@Override
+	public List<JoaNoticeDTO> serchNoticeList(String keyword, Map map) {
+		List<JoaNoticeDTO> list = sqlMap.selectList("SerchNoticeList",keyword);
 		return list;
 	}
 

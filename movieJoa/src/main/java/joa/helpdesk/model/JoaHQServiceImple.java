@@ -1,6 +1,8 @@
 package joa.helpdesk.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JoaHQServiceImple implements JoaHQService {
 	
@@ -31,14 +33,24 @@ public class JoaHQServiceImple implements JoaHQService {
 	}
 
 	@Override
-	public List<JoaHelpQuestionDTO> QuestionList() {
-		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.QuestionList();
+	public List<JoaHelpQuestionDTO> QuestionList(int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.QuestionList(map);
 		return list;
 	}
 
 	@Override
-	public List<JoaHelpQuestionDTO> serchQuestionList(String type, String state, String region, String cinema) {
-		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.serchQuestionList(type, state, region, cinema);
+	public List<JoaHelpQuestionDTO> serchQuestionList(String type, String state, String region, String cinema,int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.serchQuestionList(type, state, region, cinema,map);
 		return list;
 	}
 
@@ -59,6 +71,23 @@ public class JoaHQServiceImple implements JoaHQService {
 	public JoaHelpQuestionDTO QuestionBorder(int idx) {
 		JoaHelpQuestionDTO dto = JoaHelpQuestionDao.QuestionBorder(idx);
 		return dto;
+	}
+	
+	@Override
+	public int questionTotalCnt() {
+		int count = JoaHelpQuestionDao.questionTotalCnt();
+		return count;
+	}
+	
+	@Override
+	public int serchQuestionTotalCnt(String type, String state, String region, String cinema) {
+		Map map = new HashMap();
+		map.put("type", type);
+		map.put("state", state);
+		map.put("region", region);
+		map.put("cinema", cinema);
+		int count = JoaHelpQuestionDao.serchQuestionTotalCnt(map);
+		return count;
 	}
 
 

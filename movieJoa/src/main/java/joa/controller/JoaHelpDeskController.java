@@ -1,10 +1,14 @@
+
 package joa.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import joa.helpdesk.model.JoaHQService;
@@ -33,20 +37,57 @@ public class JoaHelpDeskController {
 	
 	//자주 찾는 질문
 	@RequestMapping("/manyHelp.do")
-	public ModelAndView manyHelp(){
+	public ModelAndView manyHelp(@RequestParam(value =  "cp", defaultValue = "1")int cp){
+		String backA_color = "background-color: #F05650";
+		int totalCnt=bbsService.bbsTotalCnt();
+		int listSize=5;
+		int pageSize=5;
 		
 		List<JoaManyHelpDTO> list = joaMHService.ManyHelpList();
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("backA_color",backA_color);
 		mav.addObject("list",list);
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp");
 		return mav;
 	}
 	
 	@RequestMapping("/serchManyHelp.do")
-	public ModelAndView serchManyHelp(String type) {
+	public ModelAndView serchManyHelp(HttpServletRequest request) {
+		String type = request.getParameter("type");
 		List<JoaManyHelpDTO> list = joaMHService.serchManyHelpList(type);
 		ModelAndView mav = new ModelAndView();
+		
+		if(type.equals("예매/매표")) {
+			String backB_color = "background-color: #F05650";
+			mav.addObject("backB_color", backB_color);
+		}else if(type.equals("결제수단")) {
+			String backC_color = "background-color: #F05650";
+			mav.addObject("backC_color", backC_color);
+		}else if(type.equals("포인트/쿠폰")) {
+			String backD_color = "background-color: #F05650";
+			mav.addObject("backD_color", backD_color);
+		}else if(type.equals("할인혜택")) {
+			String backE_color = "background-color: #F05650";
+			mav.addObject("backE_color", backE_color);
+		}else if(type.equals("스토어샵")) {
+			String backF_color = "background-color: #F05650";
+			mav.addObject("backF_color", backF_color);
+		}else if(type.equals("홈페이지")) {
+			String backG_color = "background-color: #F05650";
+			mav.addObject("backG_color", backG_color);
+		}
+	
 		mav.addObject("list",list);
+		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp");
+		return mav;
+	}
+	@RequestMapping("manyHelpSerch.do")
+	public ModelAndView manyHelpSerch(String keyword) {
+		String backA_color = "background-color: #F05650";
+		ModelAndView mav = new ModelAndView();
+		List<JoaManyHelpDTO> list = joaMHService.manyHelpSerch(keyword);
+		mav.addObject("backA_color",backA_color);
+		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp");
 		return mav;
 	}

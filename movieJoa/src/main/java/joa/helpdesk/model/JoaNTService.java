@@ -10,9 +10,11 @@ public interface JoaNTService {
 	
 	public int rewriteNotice(JoaNoticeDTO dto);
 	
-	public List<JoaNoticeDTO> NoticeList();
+	public List<JoaNoticeDTO> NoticeList(int cp, int ls);
 	
-	public List<JoaNoticeDTO> serchNoticeList(String type);
+	public List<JoaNoticeDTO> noticeType(String type,int cp, int ls);
+	
+	public List<JoaNoticeDTO> serchNoticeList(String keyword,int cp, int ls);
 	
 	public JoaNoticeDTO noticeBorder(int idx);
 }

@@ -1,7 +1,8 @@
 package joa.helpdesk.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
+import java.util.*;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -37,14 +38,14 @@ public class JoaHelpQuestionDAOImple implements JoaHelpQuestionDAO {
 
 
 	@Override
-	public List<JoaHelpQuestionDTO> QuestionList() {
+	public List<JoaHelpQuestionDTO> QuestionList(Map map) {
 		// TODO Auto-generated method stub
 		List<JoaHelpQuestionDTO> list = sqlMap.selectList("QuestionList");
 		return list;
 	}
 
 	@Override
-	public List<JoaHelpQuestionDTO> serchQuestionList(String type, String state, String region, String cinema) {
+	public List<JoaHelpQuestionDTO> serchQuestionList(String type, String state, String region, String cinema,Map map) {
 		List<JoaHelpQuestionDTO> list = sqlMap.selectList("SerchQuestionList");
 		return list;
 	}
@@ -69,5 +70,15 @@ public class JoaHelpQuestionDAOImple implements JoaHelpQuestionDAO {
 		
 		return result;
 	}
-
+	
+	@Override
+	public int questionTotalCnt() {
+		int count = sqlMap.selectOne("QuestionTotalCnt");
+		return count;
+	}
+	@Override
+	public int serchQuestionTotalCnt(Map map) {
+		int count = sqlMap.selectOne("SerchQuestionTotalCnt", map);
+		return count;
+	}
 }

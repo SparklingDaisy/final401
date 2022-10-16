@@ -30,14 +30,24 @@ public class JoaMHServiceImple implements JoaMHService {
 	}
 
 	@Override
-	public List<JoaManyHelpDTO> ManyHelpList() {
-		List<JoaManyHelpDTO> list = JoaManyHelpDao.ManyHelpList();
+	public List<JoaManyHelpDTO> ManyHelpList(int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaManyHelpDTO> list = JoaManyHelpDao.ManyHelpList(map);
 		return list;
 	}
 
 	@Override
-	public List<JoaManyHelpDTO> serchManyHelpList(String type) {
-		List<JoaManyHelpDTO> list = JoaManyHelpDao.serchManyHelpList(type);
+	public List<JoaManyHelpDTO> serchManyHelpList(String type,int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaManyHelpDTO> list = JoaManyHelpDao.serchManyHelpList(type,map);
 		return list;
 	}
 
@@ -45,6 +55,17 @@ public class JoaMHServiceImple implements JoaMHService {
 	public JoaManyHelpDTO ManyHelpBorder(int idx) {
 		JoaManyHelpDTO dto = JoaManyHelpDao.ManyHelpBorder(idx);
 		return dto;
+	}
+	
+	@Override
+	public List<JoaManyHelpDTO> manyHelpType(String keyword,int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaManyHelpDTO> list = JoaManyHelpDao.manyHelpType(keyword, map);
+		return list;
 	}
 
 }
