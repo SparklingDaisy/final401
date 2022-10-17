@@ -62,7 +62,7 @@ public class JoaHelpDeskController {
 		int totalCnt=joaMHService.manyHelpTypeTotalCnt(type);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("manyHelp.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("manyHelp.do", totalCnt, listSize, pageSize, cp);
 		List<JoaManyHelpDTO> list = joaMHService.manyHelpType(type, cp, listSize);
 		ModelAndView mav = new ModelAndView();
 
@@ -97,7 +97,7 @@ public class JoaHelpDeskController {
 		int totalCnt=joaMHService.serchManyHelpListTotalCnt(keyword);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("manyHelpSerch.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("manyHelpSerch.do", totalCnt, listSize, pageSize, cp);
 		
 		ModelAndView mav = new ModelAndView();
 		List<JoaManyHelpDTO> list = joaMHService.serchManyHelpList(keyword, cp, listSize);
@@ -242,6 +242,7 @@ public class JoaHelpDeskController {
 		List<JoaNoticeDTO> list = joaNTService.NoticeList(cp, listSize);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pageStr", pageStr);
+		mav.addObject("backA_color", backA_color);
 		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_notice");
 		return mav;
@@ -251,27 +252,25 @@ public class JoaHelpDeskController {
 	public ModelAndView noticeType(HttpServletRequest request,@RequestParam(value =  "cp", defaultValue = "1")int cp) {
 		String type = request.getParameter("type");
 		ModelAndView mav = new ModelAndView();
-		if(type.equals("예매/매표")) {
+		int totalCnt=joaNTService.noticeTypeTotalCnt(type);
+		int listSize=5;
+		int pageSize=5;
+		String pageStr=joa.page.Sub_PageModule.makePage("noticeType.do?type="+type, totalCnt, listSize, pageSize, cp);
+		List<JoaNoticeDTO> list = joaNTService.noticeType(type, cp, pageSize);
+		if(type.equals("시스템점검")) {
 			String backB_color = "background-color: #F05650";
 			mav.addObject("backB_color", backB_color);
-		}else if(type.equals("결제수단")) {
+		}else if(type.equals("극장")) {
 			String backC_color = "background-color: #F05650";
 			mav.addObject("backC_color", backC_color);
-		}else if(type.equals("포인트/쿠폰")) {
+		}else if(type.equals("기타")) {
 			String backD_color = "background-color: #F05650";
 			mav.addObject("backD_color", backD_color);
 		}
 		
-		int totalCnt=joaNTService.noticeTypeTotalCnt(type);
-		int listSize=5;
-		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("noticeType.do", totalCnt, listSize, pageSize, cp);
-		
-		List<JoaNoticeDTO> list = joaNTService.noticeType(type, cp, pageSize);
-		
 		mav.addObject("pageStr", pageStr);
 		mav.addObject("list",list);
-		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMManyHelp");
+		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_notice");
 		return mav;
 	}
 	
@@ -282,7 +281,7 @@ public class JoaHelpDeskController {
 		int totalCnt=joaNTService.serchNoticeTotalCnt(keyword);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("serchNotice.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("serchNotice.do", totalCnt, listSize, pageSize, cp);
 		
 		List<JoaNoticeDTO> list = joaNTService.serchNoticeList(keyword, cp, pageSize);
 		ModelAndView mav = new ModelAndView();

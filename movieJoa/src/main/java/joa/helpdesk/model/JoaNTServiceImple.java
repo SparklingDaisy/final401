@@ -45,9 +45,10 @@ public class JoaNTServiceImple implements JoaNTService {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map map = new HashMap();
+		map.put("keyword", keyword);
 		map.put("start", start);
 		map.put("end", end);
-		List<JoaNoticeDTO> list = JoaNoticeDao.serchNoticeList(keyword,map);
+		List<JoaNoticeDTO> list = JoaNoticeDao.serchNoticeList(map);
 		return list;
 	}
 
@@ -62,9 +63,10 @@ public class JoaNTServiceImple implements JoaNTService {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map map = new HashMap();
+		map.put("type", type);
 		map.put("start", start);
 		map.put("end", end);
-		List<JoaNoticeDTO> list = JoaNoticeDao.noticeType(type, map);
+		List<JoaNoticeDTO> list = JoaNoticeDao.noticeType(map);
 		return list;
 	}
 	

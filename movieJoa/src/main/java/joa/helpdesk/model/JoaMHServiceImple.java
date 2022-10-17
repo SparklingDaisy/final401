@@ -45,9 +45,11 @@ public class JoaMHServiceImple implements JoaMHService {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map map = new HashMap();
+		map.put("type", type);
 		map.put("start", start);
 		map.put("end", end);
-		List<JoaManyHelpDTO> list = JoaManyHelpDao.serchManyHelpList(type,map);
+		
+		List<JoaManyHelpDTO> list = JoaManyHelpDao.manyHelpType(map);
 		return list;
 	}
 
@@ -62,9 +64,10 @@ public class JoaMHServiceImple implements JoaMHService {
 		int start = (cp-1)*ls+1;
 		int end = cp*ls;
 		Map map = new HashMap();
+		map.put("keyword", keyword);
 		map.put("start", start);
 		map.put("end", end);
-		List<JoaManyHelpDTO> list = JoaManyHelpDao.manyHelpType(keyword, map);
+		List<JoaManyHelpDTO> list = JoaManyHelpDao.serchManyHelpList(map);
 		return list;
 	}
 	

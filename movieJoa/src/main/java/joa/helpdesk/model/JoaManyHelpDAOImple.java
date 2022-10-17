@@ -40,8 +40,8 @@ public class JoaManyHelpDAOImple implements JoaManyHelpDAO {
 	}
 	
 	@Override
-	public List<JoaManyHelpDTO> manyHelpType(String type, Map map) {
-		List<JoaManyHelpDTO> list= sqlMap.selectList("ManyHelpType",type);
+	public List<JoaManyHelpDTO> manyHelpType(Map map) {
+		List<JoaManyHelpDTO> list= sqlMap.selectList("ManyHelpType");
 		return list;
 	}
 
@@ -52,8 +52,8 @@ public class JoaManyHelpDAOImple implements JoaManyHelpDAO {
 	}
 
 	@Override
-	public List<JoaManyHelpDTO> serchManyHelpList(String keyword, Map map) {
-		List<JoaManyHelpDTO> list = sqlMap.selectList("SerchManyHelpList", keyword);
+	public List<JoaManyHelpDTO> serchManyHelpList(Map map) {
+		List<JoaManyHelpDTO> list = sqlMap.selectList("SerchManyHelpList");
 		return list;
 	}
 	
@@ -65,7 +65,7 @@ public class JoaManyHelpDAOImple implements JoaManyHelpDAO {
 	
 	@Override
 	public int manyHelpTypeTotalCnt(Map map) {
-		int count = sqlMap.selectOne("ManyHelpType", map);
+		int count = sqlMap.selectOne("ManyHelpTypeTotalCnt", map);
 		return count;
 	}
 	

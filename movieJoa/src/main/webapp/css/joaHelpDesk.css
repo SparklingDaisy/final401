@@ -91,4 +91,55 @@
 .manyHelpBorderReadnum{
 	width: 90px;
 }
+.memberbox{
 
+}
+
+#subject{
+	width:580px;
+	height:25px;
+	font-size:15px;
+}
+#bordercontent{
+	font-size:15px;
+}
+.emailContent{
+	display: flex;
+	justify-content : center;
+	text-align:left;
+	align:left;
+	width: 700px;
+	height:auto;
+	margin: 0px auto;
+	overflow:outo;
+	box-shadow: 1px 1px 3px 1px #dadce0 inset;
+}
+
+.submitbutton{
+	font-size:13px; 
+	padding:8px 17px;
+	align:right;
+	background-color: black;
+	color: white;
+	cursor:pointer;
+}
+.mun{
+	padding-right: 12px;
+}
+.je{
+	align:center;
+	padding-left: 12px;
+}
+.sub{
+	padding-top: 20px;
+}
+.hr{
+	border:0px;
+	height: 1px;
+	background-color: red;
+	noshade:noshade;
+}
+.ta{
+	border-spacing: 0 20px;
+	
+}

@@ -12,9 +12,9 @@ public interface JoaNoticeDAO {
 	
 	public List<JoaNoticeDTO> NoticeList(Map map);
 	
-	public List<JoaNoticeDTO> noticeType(String type, Map map);
+	public List<JoaNoticeDTO> noticeType(Map map);
 	
-	public List<JoaNoticeDTO> serchNoticeList(String keyword, Map map);
+	public List<JoaNoticeDTO> serchNoticeList(Map map);
 	
 	public JoaNoticeDTO noticeBorder(int idx);
 	
