@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+.writebutton{
+	background-color: #F05650;
+	color: white;
+	cursor:pointer;
+	outline:0;
+	border:0;
+	font-size:13px; 
+	padding:8px 17px;
+}
+
 .serchbar{
 	height:19px;
 	width: 330px;

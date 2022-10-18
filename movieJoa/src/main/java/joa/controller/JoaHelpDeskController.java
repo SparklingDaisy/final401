@@ -204,7 +204,7 @@ public class JoaHelpDeskController {
 	public ModelAndView manyBorderWrite(JoaManyHelpDTO dto) {
 		int result = joaMHService.addManyHelp(dto);
 		ModelAndView mav = new ModelAndView();
-		String msg = result>0?"자주찾는 질문 게시글이\n정상적으로 등록되었습니다.":"자주찾는 질문 게시글 등록이 실패했습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"자주찾는 질문 게시글이 정상적으로 등록되었습니다.":"자주찾는 질문 게시글 등록이 실패했습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -214,7 +214,7 @@ public class JoaHelpDeskController {
 	public ModelAndView manyBorderReWrite(JoaManyHelpDTO dto) {
 		int result = joaMHService.rewriteManyHelp(dto);
 		ModelAndView mav = new ModelAndView();
-		String msg = result>0?"자주찾는 질문 게시글이\n정상적으로 수정되었습니다.":"자주찾는 질문 게시글 수정이 실패했습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"자주찾는 질문 게시글이 정상적으로 수정되었습니다.":"자주찾는 질문 게시글 수정이 실패했습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg",msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -222,7 +222,7 @@ public class JoaHelpDeskController {
 	@RequestMapping("/manyBorderDelete.do")
 	public ModelAndView manyBorderDelete(@RequestParam(value="idx")int idx) {
 		int result = joaMHService.deleteManyHelp(idx);
-		String msg = result>0?"자주찾는 질문 게시글이\n정상적으로 삭제되었습니다.":"자주찾는 질문 게시글 삭제에 실패했습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"자주찾는 질문 게시글이 정상적으로 삭제되었습니다.":"자주찾는 질문 게시글 삭제에 실패했습니다. 관리자에게 문의바랍니다.";
 		ModelAndView mav =new ModelAndView();
 		mav.addObject("msg",msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
@@ -368,7 +368,7 @@ public class JoaHelpDeskController {
 	public ModelAndView noticeWrite(JoaNoticeDTO dto) {
 		int result = joaNTService.addNotice(dto);
 		ModelAndView mav = new ModelAndView();
-		String msg = result>0?"공지게시판에 게시글이\n등록되었습니다.":"공지게시판 게시글 등록에 실패하였습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"공지게시판에 게시글이 등록되었습니다.":"공지게시판 게시글 등록에 실패하였습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -378,7 +378,7 @@ public class JoaHelpDeskController {
 	public ModelAndView reNoticeWrite(JoaNoticeDTO dto) {
 		ModelAndView mav = new ModelAndView();
 		int result = joaNTService.rewriteNotice(dto);
-		String msg = result>0?"공지게시판에 게시글이\n수정되었습니다.":"공지게시판 게시글 수정에 실패하였습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"공지게시판에 게시글이 수정되었습니다.":"공지게시판 게시글 수정에 실패하였습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -388,7 +388,7 @@ public class JoaHelpDeskController {
 	public ModelAndView noticeDelete(@RequestParam(value="idx") int idx) {
 		ModelAndView mav = new ModelAndView();
 		int result = joaNTService.deleteNotice(idx);
-		String msg = result>0?"공지게시판에 게시글이\n삭제되었습니다.":"공지게시판 게시글 삭제에 실패하였습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"공지게시판에 게시글이 삭제되었습니다.":"공지게시판 게시글 삭제에 실패하였습니다.관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -405,10 +405,17 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/emailHelpWrite.do")
 	public ModelAndView emailHelpWrite(JoaHelpQuestionDTO dto) {
-		dto.setState("미답변");
-		ModelAndView mav = new ModelAndView();
+		dto.setHqt_state("미답변");
+		if(dto.getHqt_cinema()==null) {
+			dto.setHqt_cinema("온라인");
+		}
+		if(dto.getHqt_region()==null) {
+			dto.setHqt_region("온라인");
+		}
+		
 		int result = joaHQService.addEmailQuestion(dto);
-		String msg = result>0?"문의가 정상적으로\n등록되었습니다.":"문의 등록에 실패하였습니다.\n1:1문의를 이용해주세요.";
+		String msg = result>0?"문의가 정상적으로 등록되었습니다.":"문의 등록에 실패하였습니다. 1:1문의를 이용해주세요.";
+		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_msg");
 		return mav;
@@ -418,29 +425,17 @@ public class JoaHelpDeskController {
 	//관리자 이메일 문의
 	
 	@RequestMapping("/adminEmailHelp.do")
-	public ModelAndView adminEmailHelp(HttpServletRequest request, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
-		
-		String type= request.getParameter("type");
-		String state = request.getParameter("state");
-		String region = request.getParameter("region");
-		String cinema = request.getParameter("cinema");
-		
-		type="이메일";
-		state = "미답변";
-		if(region.equals("전체")) {
-			region="[";
-		}
-		if(cinema.equals("전체")) {
-			cinema="[";
-		}
-		
+	public ModelAndView adminEmailHelp(@RequestParam(value =  "cp", defaultValue = "1")int cp) {
+		String state = "미답변";
 		ModelAndView mav = new ModelAndView();
-		int totalCnt=joaHQService.serchQuestionTotalCnt(type, state, region, cinema);
+		int totalCnt=joaHQService.emailTotalCnt(state);
 		int listSize=5;
 		int pageSize=5;
 		String pageStr=joa.page.PageModule.makePage("adminEmailHelp.do", totalCnt, listSize, pageSize, cp);
 		
-		List<JoaHelpQuestionDTO> list = joaHQService.serchQuestionList(type,state,region , cinema,cp, listSize);
+		List<JoaHelpQuestionDTO> list = joaHQService.emailList(state, cp, pageSize);
+		
+		mav.addObject("pageStr", pageStr);
 		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMEmailHelp");
 		return mav;
@@ -457,7 +452,7 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/answerEmailHelp.do")
 	public ModelAndView answerEmailHelp(JoaHelpQuestionDTO dto) {
-		dto.setState("답변완료");
+		dto.setHqt_state("답변완료");
 		ModelAndView mav = new ModelAndView();
 		int result = joaHQService.answerQuestion(dto);
 		String msg = result>0?"이메일 답변완료 설정이 등록되었습니다":"이메일 답변완료 설정 등록에 실패했습니다";
@@ -477,9 +472,16 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/oneByOneHelpWrite.do")
 	public ModelAndView oneByOneHelpWrite(JoaHelpQuestionDTO dto) {
+		dto.setHqt_state("미답변");
+		if(dto.getHqt_cinema()==null) {
+			dto.setHqt_cinema("온라인");
+		}
+		if(dto.getHqt_region()==null) {
+			dto.setHqt_region("온라인");
+		}
 		ModelAndView mav = new ModelAndView();
 		int result = joaHQService.addQuestion(dto);
-		String msg = result>0?"1:1문의 등록이 완료되었습니다.":"1:1문의 등록이 실패하였습니다.\n아래 전화번호로 상담 및 문의를 해주세요.\n02-7777-7777";
+		String msg = result>0?"1:1문의 등록이 완료되었습니다.":"1:1문의 등록이 실패하였습니다.아래 전화번호로 상담 및 문의를 해주세요.02-7777-7777";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_msg");
 		return mav;
@@ -533,7 +535,7 @@ public class JoaHelpDeskController {
 	public ModelAndView answerMemberHelp(JoaHelpQuestionDTO dto) {
 		ModelAndView mav = new ModelAndView();
 		int result = joaHQService.answerQuestion(dto);
-		String msg = result>0?"1:1문의 답변이\n정상적으로 등록됬습니다.":"1:1문의 답변 등록에 실패했습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"1:1문의 답변이 정상적으로 등록됬습니다.":"1:1문의 답변 등록에 실패했습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -541,10 +543,10 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/reAnswerMemberHelp.do")
 	public ModelAndView reAnswerMemberHelp(JoaHelpQuestionDTO dto) {
-		dto.setState("답변완료");
+		dto.setHqt_state("답변완료");
 		ModelAndView mav = new ModelAndView();
 		int result = joaHQService.reanswerQuestion(dto);
-		String msg = result>0?"1:1문의 답변이\n정상적으로 등록됬습니다.":"1:1문의 답변 등록에 실패했습니다.\n관리자에게 문의바랍니다.";
+		String msg = result>0?"1:1문의 답변이 정상적으로 등록됬습니다.":"1:1문의 답변 등록에 실패했습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
 		return mav;
@@ -579,7 +581,7 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/reAnswerSet.do")
 	public ModelAndView reAnswerSet(JoaHelpQuestionDTO dto) {
-		dto.setState("재답변");
+		dto.setHqt_state("재답변");
 		ModelAndView mav = new ModelAndView();
 		int result = joaHQService.reanswerQuestion(dto);
 		String msg = result>0?"재답변 설정이 완료되었습니다.":"재답변 설정이 실패했습니다.";

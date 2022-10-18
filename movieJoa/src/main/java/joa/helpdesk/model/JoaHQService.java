@@ -23,4 +23,8 @@ public interface JoaHQService {
 	
 	public int serchQuestionTotalCnt(String type,String state, String region, String cinema);
 	
+	public List<JoaHelpQuestionDTO> emailList(String state,int cp, int ls);
+	
+	public int emailTotalCnt(String state);
+	
 }

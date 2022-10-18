@@ -4,6 +4,7 @@ package joa.helpdesk.model;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import java.sql.*;
@@ -78,7 +79,19 @@ public class JoaHelpQuestionDAOImple implements JoaHelpQuestionDAO {
 	}
 	@Override
 	public int serchQuestionTotalCnt(Map map) {
-		int count = sqlMap.selectOne("SerchQuestionTotalCnt", map);
+		int count = sqlMap.selectOne("SerchQuestionTotalCnt");
+		return count;
+	}
+	
+	@Override
+	public List<JoaHelpQuestionDTO> emailList(Map map) {
+		List<JoaHelpQuestionDTO> list = sqlMap.selectList("emailList",map);
+		return list;
+	}
+	
+	@Override
+	public int emailTotalCnt(String state) {
+		int count = sqlMap.selectOne("emailTotalCnt", state);
 		return count;
 	}
 }

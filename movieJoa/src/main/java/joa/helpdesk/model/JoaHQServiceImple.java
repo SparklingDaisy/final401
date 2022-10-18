@@ -89,6 +89,24 @@ public class JoaHQServiceImple implements JoaHQService {
 		int count = JoaHelpQuestionDao.serchQuestionTotalCnt(map);
 		return count;
 	}
-
+	
+	@Override
+	public List<JoaHelpQuestionDTO> emailList(String state, int cp, int ls) {
+		
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.emailList(map);
+		return list;
+	}
+	
+	@Override
+	public int emailTotalCnt(String state) {
+		int count = JoaHelpQuestionDao.emailTotalCnt(state);
+		return count;
+	}
 
 }

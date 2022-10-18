@@ -11,17 +11,19 @@
 <script>
 	
 document.addEventListener('DOMContentLoaded', function() {
-    var checkboxes = document.querySelectorAll('input[type=checkbox][name=on]');
+    var checkboxes = document.querySelectorAll('input[type=checkbox][name=off]');
  
     for (var checkbox of checkboxes)
     {
         checkbox.addEventListener('change', function(event)
         {
             if (event.target.checked) {
-             document.getElementById('region').setAttribute('disabled',true);
-             document.getElementById('cinema').setAttribute('disabled',true);
-             
-             
+             var region=document.getElementById('region');
+			 region.setAttribute('disabled',true);
+            var cinema= document.getElementById('cinema');
+            cinema.setAttribute('disabled',true);
+             region[0].selected = true;
+             cinema[0].selected = true;
             }
             else {
             	document.getElementById('region').removeAttribute("disabled");
@@ -37,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 
 	function categoryChange(e) {
-	  var seoul = ['강남/역삼/삼성', '신사/청담/압구정', '서초/교대/사당', '잠실/송파/강동',
+	  var seoul = ['영화관선택','강남/역삼/삼성', '신사/청담/압구정', '서초/교대/사당', '잠실/송파/강동',
           '을지로/명동/중구', '서울역/이태원/용산', '종로/인사동','홍대/합정/마포/서대문',
           '영등포역', '구로/신도림/금천'];
-	  var incheon = ['송도/소래포구', '인천국제공항/강화/을왕리/영종'];
-	  var gyeonggi = ['가평/청평/양평', '수원/화성', '고양/파주/김포', '의정부/포천/동두천'];
-	  var gangwon = ['속초/양양/고성', '춘천/인제/철원', '강릉', '평창/정선/영월'];
-	  var select = ['영화관선택'];
+	  var incheon = ['영화관선택','송도/소래포구', '인천국제공항/강화/을왕리/영종'];
+	  var gyeonggi = ['영화관선택','가평/청평/양평', '수원/화성', '고양/파주/김포', '의정부/포천/동두천'];
+	  var gangwon = ['영화관선택','속초/양양/고성', '춘천/인제/철원', '강릉', '평창/정선/영월'];
+	  var select = ['영화관선택','영화관선택'];
 	  var target = document.getElementById("cinema");
 	 
 	  if(e.value == "서울") var d = seoul;
@@ -75,29 +77,31 @@ document.addEventListener('DOMContentLoaded', function() {
 	불편사항이나 문의사항을 남겨주시면 최대한 신속하게 답변 드리겠습니다.</div>
 	<br>
 	<br>
-	<form>
+	<form name="emailFM" action="emailHelpWrite.do">
 	<div class="memberbox">
 		<div>ID</div><hr class="hr"><div>E-mail</div>
+		<input type="hidden" value="test" name="hqt_id">
+		<input type="hidden" value="test" name="hqt_email">
 	</div>
 	<br>
 	<div><label>문의유형 </label>
 		&nbsp;
-		<label><input type="radio" name="type" value="편의">편의</label>
+		<label><input type="radio" name="hqt_type" value="편의">편의</label>
 		&nbsp;
-		<label><input type="radio" name="type" value="결제">결제</label>
+		<label><input type="radio" name="hqt_type" value="결제">결제</label>
 		&nbsp;
-		<label><input type="radio" name="type" value="이벤트">이벤트</label>
+		<label><input type="radio" name="hqt_type" value="이벤트">이벤트</label>
 		&nbsp;
-		<label><input type="radio" name="type" value="분실">분실</label>
+		<label><input type="radio" name="hqt_type" value="분실">분실</label>
 		&nbsp;
-		<label><input type="radio" name="type" value="서비스">서비스</label>
+		<label><input type="radio" name="hqt_type" value="서비스">서비스</label>
 	</div>
 	<hr class="hr">
 	<div><label>영화관선택 </label>
 		&nbsp;
-		<label><input name="on" type="checkbox">선택안함</label>
+		<label><input name="off" type="checkbox">선택안함</label>
 		&nbsp;
-		<select id="region" onchange="categoryChange(this)">
+		<select id="region" onchange="categoryChange(this)" name="hqt_region">
 			<option value="온라인">지역선택</option>
 			<option value="서울">서울</option>
 		  	<option value="경기">경기</option>
@@ -105,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  	<option value="강원">강원</option>
 		</select>
 		&nbsp;
-		<select id="cinema">
+		<select id="cinema" name="hqt_cinema">
 		<option value="온라인">영화관선택</option>
 		
 		</select>
@@ -114,14 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 	<div class="emailContent">
-		<table class="ta"align="center">
+		<table class="ta" align="center">
 			<tr>
 				<td class="je">제목</td>
-				<td><input id="subject" type="text" name="subject"></td>
+				<td><input id="subject" type="text" name="hqt_subject"></td>
 			</tr>
 			<tr>
 				<td class="mun">문의내용</td>
-				<td><textarea rows="31" cols="76" name="content" id="bordercontent"></textarea></td>
+				<td><textarea rows="31" cols="76" name="hqt_content" id="bordercontent"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right" class="sub"><input type="submit" value="등록하기" class="submitbutton"></td>

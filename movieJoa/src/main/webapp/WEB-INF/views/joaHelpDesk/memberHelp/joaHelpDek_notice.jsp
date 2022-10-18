@@ -50,9 +50,9 @@
 					<td colspan="3" align="center">등록된 게시글이 없습니다.</td>
 				</tr>
 			</c:if>
-		<c:forEach var="list" items="${list }">
+		<c:forEach var="dto" items="${list }">
 			<tr>
-				<td class="manyHelpBordertype">${list.type }</td><td>${list.subject }</td><td class="manyHelpBorderReadnum">${list.readnum }</td>
+				<td class="manyHelpBordertype">${dto.ntc_type }</td><td>${dto.ntc_subject }</td><td class="manyHelpBorderReadnum">${dto.ntc_readnum }</td>
 			</tr>
 		</c:forEach>
 			</tbody>

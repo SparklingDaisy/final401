@@ -35,13 +35,13 @@ public class JoaManyHelpDAOImple implements JoaManyHelpDAO {
 
 	@Override
 	public List<JoaManyHelpDTO> ManyHelpList(Map map) {
-		List<JoaManyHelpDTO> list = sqlMap.selectList("ManyHelpList");
+		List<JoaManyHelpDTO> list = sqlMap.selectList("ManyHelpList",map);
 		return list;
 	}
 	
 	@Override
 	public List<JoaManyHelpDTO> manyHelpType(Map map) {
-		List<JoaManyHelpDTO> list= sqlMap.selectList("ManyHelpType");
+		List<JoaManyHelpDTO> list= sqlMap.selectList("ManyHelpType",map);
 		return list;
 	}
 
@@ -53,7 +53,7 @@ public class JoaManyHelpDAOImple implements JoaManyHelpDAO {
 
 	@Override
 	public List<JoaManyHelpDTO> serchManyHelpList(Map map) {
-		List<JoaManyHelpDTO> list = sqlMap.selectList("SerchManyHelpList");
+		List<JoaManyHelpDTO> list = sqlMap.selectList("SerchManyHelpList",map);
 		return list;
 	}
 	

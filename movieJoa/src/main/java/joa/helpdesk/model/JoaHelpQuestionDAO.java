@@ -21,4 +21,8 @@ public interface JoaHelpQuestionDAO {
 	public int questionTotalCnt();
 	
 	public int serchQuestionTotalCnt(Map map);
+	
+	public List<JoaHelpQuestionDTO> emailList(Map map);
+	
+	public int emailTotalCnt(String state);
 }
