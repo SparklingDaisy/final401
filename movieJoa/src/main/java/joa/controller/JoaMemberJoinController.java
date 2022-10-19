@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import joa.member.model.JoaMemberDAO;
@@ -23,16 +24,24 @@ public class JoaMemberJoinController {
 	@RequestMapping("/memberJoinFormSubmit.do")
 	public ModelAndView memberJoinSubmit(@ModelAttribute("dto") JoaMemberDTO dto) {
 		int result=joaMemberDao.MemberJoin(dto);
-		String msg=result>0?"회원가입을 축하합니다.":"회원 가입 실패";
+		String msg=result>0?dto.getMem_id()+"님 회원가입을 축하합니다.":"회원 가입 실패";
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("msg",msg);
 		mav.setViewName("joaMemberJoin/joaMemberJoin_msg");
 		return mav;
 	}
 	@RequestMapping("/memberLogout.do")
-	public String memberLogout(HttpSession session) {
+	public ModelAndView memberLogout(HttpSession session) {
 		session.invalidate();
-		return "index";
+		ModelAndView mav=new ModelAndView();
+		String msg="성공적으로 로그아웃되었습니다.";
+		mav.addObject("msg",msg);
+		mav.setViewName("joaMemberJoin/joaMemberJoin_msg");
+		return mav;
 	}
-	
+	@RequestMapping("/memberIdCheck.do")
+	public @ResponseBody int memberIdCheck(String id) {
+		int result=joaMemberDao.memberIdCheck(id);
+		return result;
+	}
 }

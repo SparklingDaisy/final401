@@ -9,16 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-function kakaoAddr(){
-	new daum.Postcode({
-        oncomplete: function(data) {
-            document.getElementById('addr').value=data.address;
-            document.getElementById('addr_num').value=data.zonecode;
-        }
-    }).open();
-}
-</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
 function isTrue(){
 	if(document.getElementById('pwd1').value!=''&&document.getElementById('pwd2').value!=''){
@@ -100,7 +91,11 @@ function validate(){
 		window.alert('상세주소를 입력해주세요.');
 		return false;
 	}
-}
+function memberIdCheckConfirm(){
+	var mem_id=document.getElementById('idCheck').value;
+	location.href='memberIdCheck.do?id='+mem_id;
+}	
+}	
 </script>
 </head>
 <body>
@@ -113,7 +108,7 @@ function validate(){
 			<tr>
 				<th>ID</th>
 				<td><input type="text" name="mem_id" id="idCheck" placeholder="사용할 ID를 설정하세요.">
-				<span class="setId">아이디는 4~12로 설정해주세요.</span>
+				<input type="button" value="중복검사" onclick="memberIdCheckConfirm()">
 			</tr>
 			<tr>
 				<th>이름</th>
