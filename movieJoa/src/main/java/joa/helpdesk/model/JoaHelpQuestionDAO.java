@@ -8,19 +8,9 @@ public interface JoaHelpQuestionDAO {
 	
 	public int addEmailQuestion(JoaHelpQuestionDTO dto);
 	
-	public List<JoaHelpQuestionDTO> QuestionList(Map map);
+	public List<JoaHelpQuestionDTO> topQuestionList(Map map);
 	
-	public List<JoaHelpQuestionDTO> serchQuestionList(String type,String state, String region, String cinema,Map map);
-	
-	public JoaHelpQuestionDTO QuestionBorder(int idx);
-	
-	public int answerQuestion(JoaHelpQuestionDTO dto);
-	
-	public int reanswerQuestion(JoaHelpQuestionDTO dto);
-	
-	public int questionTotalCnt();
-	
-	public int serchQuestionTotalCnt(Map map);
+	public int topQuestionTotalCnt();
 	
 	public List<JoaHelpQuestionDTO> emailList(Map map);
 	
@@ -33,4 +23,23 @@ public interface JoaHelpQuestionDAO {
 	public List<JoaHelpQuestionDTO> emailSerchList(Map map);
 	
 	public int emailSerchTotalCnt(Map map);
+	
+	public JoaHelpQuestionDTO questionBorder(int idx);
+	
+	public int answerQuestion(JoaHelpQuestionDTO dto);
+	
+	public int reanswerQuestion(JoaHelpQuestionDTO dto);
+	
+	public List<JoaHelpQuestionDTO> questionList(Map map);
+	
+	public int questionTotalCnt(String state);
+	
+	public List<JoaHelpQuestionDTO> questionTypeList(Map map);
+	
+	public int questionTypeTotalCnt(Map map);
+	
+	public List<JoaHelpQuestionDTO> serchQuestionList(Map map);
+	
+	public int serchQuestionTotalCnt(Map map);
+	
 }

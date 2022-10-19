@@ -1,0 +1,74 @@
+@charset "UTF-8";
+.helpMenu_member{
+	position: absolute;
+	top:188px;
+	float: left;
+	left: 222px;
+	border: 0px; 
+	padding: 0px;
+	overflow: auto;
+	background-color :#EEEEEE;
+	align:left;
+	
+}
+.memberHelpBorder{
+	height:auto;
+	width: 700px;
+	align:center;
+	border: 1px solid red;
+}
+.memberHelpContent{
+	display: flex;
+	justify-content : center;
+	text-align:center;
+	align:center;
+	width: 700px;
+	height:auto;
+	margin: 0px auto;
+	overflow: auto;
+	border: 1px solid #F05650;
+}
+.memberHelpSerchBarFeild{
+	list-style-type:none;
+}
+.memberButton{
+	background-color: black;
+	color: white;
+	cursor:pointer;
+}
+.memberHelpSerch{
+	font-size:12px;
+	color:gray;
+}
+.memberHelpIntroduce{
+	font-size:12px;
+	color:gray;
+}
+
+.menuli{
+	float:left;
+    text-align:center;
+}
+.memberhelpDesk_main{
+	position: relative;
+	width: 1100px;
+   	margin: 0px auto;
+  	height:auto;
+   	overflow:auto;
+}
+.memberHelpMain{
+	text-align:left;
+	width: 700px;
+	height:auto;
+	margin: 0px auto;
+	overflow: auto;
+}
+.a{
+	display: block;
+	height:40px;
+	width: 90px;
+	background-color: gray;
+	margin-left:3px;
+	line-height: 40px;
+	color:white;
+}

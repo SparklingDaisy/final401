@@ -9,19 +9,15 @@ public interface JoaHQService {
 	
 	public int addEmailQuestion(JoaHelpQuestionDTO dto);
 	
-	public List<JoaHelpQuestionDTO> QuestionList(int cp, int ls);
+	public List<JoaHelpQuestionDTO> topQuestionList(int cp, int ls);
 	
-	public List<JoaHelpQuestionDTO> serchQuestionList(String type,String state, String region, String cinema,int cp, int ls);
+	public int topQuestionTotalCnt();
 	
-	public JoaHelpQuestionDTO QuestionBorder(int idx);
+	public JoaHelpQuestionDTO questionBorder(int idx);
 	
 	public int answerQuestion(JoaHelpQuestionDTO dto);
 	
 	public int reanswerQuestion(JoaHelpQuestionDTO dto);
-	
-	public int questionTotalCnt();
-	
-	public int serchQuestionTotalCnt(String type,String state, String region, String cinema);
 	
 	public List<JoaHelpQuestionDTO> emailList(String state,int cp, int ls);
 	
@@ -34,5 +30,17 @@ public interface JoaHQService {
 	public List<JoaHelpQuestionDTO> emailSerchList(String state, String hqt_type, String hqt_region, String hqt_cinema,int cp, int ls);
 	
 	public int emailSerchTotalCnt(String state, String hqt_type, String hqt_region, String hqt_cinema);
+	
+	public List<JoaHelpQuestionDTO> questionList(String state,int cp, int ls);
+	
+	public int questionTotalCnt(String state);
+	
+	public List<JoaHelpQuestionDTO> questionTypeList(String state, String hqt_type,int cp, int ls);
+	
+	public int questionTypeTotalCnt(String hqt_type, String state);
+	
+	public List<JoaHelpQuestionDTO> serchQuestionList(String state, String hqt_type, String hqt_region, String hqt_cinema,int cp, int ls);
+	
+	public int serchQuestionTotalCnt(String state, String hqt_type, String hqt_region, String hqt_cinema);
 	
 }

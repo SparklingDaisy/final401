@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=7">
+<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css?ver=7">
 </head>
 <body>
 <c:import url="../../header.jsp"></c:import>

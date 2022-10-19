@@ -4,27 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=1">
+<link rel="stylesheet" type="text/css" href="css/joaHelpMember.css?ver=1">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	function addType1(){
-		document.getElementById('type').setAttribute('value','편의');
-	}
-	function addType2(){
-		document.getElementById('type').setAttribute('value','편의');
-	}
-	function addType3(){
-		document.getElementById('type').setAttribute('value','편의');
-	}
-	function addType4(){
-		document.getElementById('type').setAttribute('value','편의');
-	}
-	function addType5(){
-		document.getElementById('type').setAttribute('value','편의');
-	}
-</script>
 
 <script>
 
@@ -62,14 +45,14 @@
 <c:import url="../../header.jsp"></c:import>
 <br>
 <section>
-<div class="helpDesk_main">
-<div class="manyHelpMain">
-	<h4 class="manyHelpSubject">이메일 문의</h4></div>
-	<div class="manyHelpIntroduce">회원님들께서 보내주신 이메일 문의 사항입니다.<br>
+<div class="memberhelpDesk_main">
+<div class="memberHelpMain">
+	<h4 class="memberHelpSubject">이메일 문의</h4>
+	<div class="memberHelpIntroduce">회원님들께서 보내주신 이메일 문의 사항입니다.<br>
 	관리자들을 최대한 신속하게 답변바랍니다.</div>
 	<br>
 	<form name="manyHelpSerchFM" action="adminEmailSerch.do">
-	<div class="manyHelpSerch">
+	<div class="memberHelpSerch">
 	<select id="type" name="hqt_type">
 			<option selected disabled>구분선택</option>
 			<option value="편의">편의</option>
@@ -90,11 +73,11 @@
 		<option selected disabled>영화관선택</option>
 		
 		</select>
-	<input class="button" type="submit" value="검색하기"></div>
+	<input class="memberButton" type="submit" value="검색하기"></div>
 	</form>
 	<br>
 	<div class="box">
-		<ul class="manyHelpSerchBarFeild">
+		<ul class="memberHelpSerchBarFeild">
 			<li class="menuli"><a style="${backA_color}"class="a" href="adminEmailHelp.do">전체</a></li>
 			<li class="menuli"><a style="${backB_color}"class="a" href="adminEmailType.do?hqt_type=편의" onclick="addType1()">편의</a></li>
 			<li class="menuli"><a style="${backC_color}"class="a" href="adminEmailType.do?hqt_type=결제"  onclick="addType2()">결제</a></li>
@@ -103,15 +86,16 @@
 			<li class="menuli"><a style="${backF_color}"class="a" href="adminEmailType.do?hqt_type=서비스" onclick="addType5()">서비스</a></li>
 		</ul>
 	</div>
+	</div>
 	<br>
 	
 </div>
-	<div class="manyHelpContent">
+	<div class="memberHelpContent">
 	<div>
-		<table class="manyHelpBorder">
+		<table class="memberHelpBorder">
 			<thead>
 				<tr>
-					<th class="manyHelpBordertype">구분</th>
+					<th >구분</th>
 					<th>제목</th>
 					<th>지역</th>
 					<th>영화관</th>
@@ -126,7 +110,7 @@
 		<c:forEach var="dto" items="${list }">
 		
 			<tr>
-				<td class="manyHelpBordertype">${dto.hqt_type }</td><td>${dto.hqt_subject }</td><td >${dto.hqt_region }</td><td>${dto.hqt_cinema }</td>
+				<td>${dto.hqt_type }</td><td>${dto.hqt_subject }</td><td >${dto.hqt_region }</td><td>${dto.hqt_cinema }</td>
 			</tr>
 		</c:forEach>
 			</tbody>
@@ -140,11 +124,11 @@
 		</table>
 	</div>
 	</div>
-	<ul class="helpMenu">
+	<ul class="helpMenu_member">
 		<li><a href="adminHelpDesk.do">자주찾는 질문</a></li>
 		<li><a href="adminNotice.do">공지게시판</a></li>
 		<li><a href="adminEmailHelp.do">이메일문의</a></li>
-		<li><a href="serchMemberHelp.do">1:1문의</a></li>
+		<li><a href="memberHelp.do">1:1문의</a></li>
 	</ul>
 </div>
 </section>

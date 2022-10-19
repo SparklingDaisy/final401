@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=4">
+<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css?ver=4">
 </head>
 <body>
 <c:import url="../../header.jsp"></c:import>
@@ -71,7 +71,7 @@
 		<li><a href="adminHelpDesk.do">자주찾는 질문</a></li>
 		<li><a href="adminNotice.do">공지게시판</a></li>
 		<li><a href="adminEmailHelp.do">이메일문의</a></li>
-		<li><a href="serchMemberHelp.do">1:1문의</a></li>
+		<li><a href="memberHelp.do">1:1문의</a></li>
 	</ul>
 	
 </div>

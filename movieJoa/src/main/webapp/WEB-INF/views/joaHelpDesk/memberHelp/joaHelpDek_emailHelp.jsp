@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=5">
+<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css?ver=5">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>

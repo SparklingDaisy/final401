@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css">
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=3">
+<link rel="stylesheet" type="text/css" href="css/joaHelpDesk.css?ver=3">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -20,7 +20,7 @@
 	<div class="manyHelpIntroduce">회원님들께서 가장 자주하시는 질문을 모았습니다.<br>
 	관리자들을 문제 발견 시 최고 관리자에게 보고바랍니다.</div>
 	<br>
-	<form name="manyHelpSerchFM" action="adminSerchManyHelp">
+	<form name="manyHelpSerchFM" action="adminSerchManyHelp.do">
 	<div class="manyHelpSerch"><input class="serchbar" type="text" name="keyword">&nbsp;<input class="button" type="submit" value="검색하기"></div>
 	</form>
 	<br>
@@ -74,7 +74,7 @@
 		<li><a href="adminHelpDesk.do">자주찾는 질문</a></li>
 		<li><a href="adminNotice.do">공지게시판</a></li>
 		<li><a href="adminEmailHelp.do">이메일문의</a></li>
-		<li><a href="serchMemberHelp.do">1:1문의</a></li>
+		<li><a href="memberHelp.do">1:1문의</a></li>
 	</ul>
 </div>
 </section>
