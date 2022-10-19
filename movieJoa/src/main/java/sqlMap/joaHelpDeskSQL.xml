@@ -51,7 +51,35 @@
   	where hqt_state=#{state} and hqt_email IS NOT NULL
   	</select>
 	
-	<select id="SerchQuestionList" parameterType="Map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
+	<select id="emailTypeList" parameterType="map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
+		select
+			*
+			from
+			(select rownum as rnum,a.* from
+    (select * from joa_helpquestion where hqt_state=#{state} and hqt_email IS NOT NULL and hqt_type=#{hqt_type} order by hqt_idx desc)a)b
+    where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="emailTypeTotalCnt" parameterType="map" resultType="Integer">
+  	select count(*) from joa_helpquestion
+  	where hqt_state=#{state} and hqt_email IS NOT NULL and hqt_type=#{hqt_type}
+  	</select>
+	
+	<select id="emailSerchList" parameterType="map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
+		select
+			*
+			from
+			(select rownum as rnum,a.* from
+    (select * from joa_helpquestion where hqt_state=#{state} and hqt_email IS NOT NULL and ${hqt_type} and ${hqt_region} and ${hqt_cinema} order by hqt_idx desc)a)b
+    where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="emailSerchTotalCnt" parameterType="map" resultType="Integer">
+		select count(*) from joa_helpquestion
+  		where hqt_state=#{state} and hqt_email IS NOT NULL and ${hqt_type} and ${hqt_region} and ${hqt_cinema}
+	</select>
+	
+	<select id="SerchQuestionList" parameterType="map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
 			select
 			*
 			from
@@ -66,7 +94,7 @@
     		where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
-	<select id="SerchQuestionTotalCnt" parameterType="Map" resultType="Integer">
+	<select id="SerchQuestionTotalCnt" parameterType="map" resultType="Integer">
   	select count(*) from joa_helpquestion
   	where hqt_type LIKE '%'||#{hqt_type}||'%'
   	and

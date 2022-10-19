@@ -94,4 +94,28 @@ public class JoaHelpQuestionDAOImple implements JoaHelpQuestionDAO {
 		int count = sqlMap.selectOne("emailTotalCnt", state);
 		return count;
 	}
+	
+	@Override
+	public List<JoaHelpQuestionDTO> emailTypeList(Map map) {
+		List<JoaHelpQuestionDTO> list = sqlMap.selectList("emailTypeList",map);
+		return list;
+	}
+	
+	@Override
+	public int emailTypeTotalCnt(Map map) {
+		int count = sqlMap.selectOne("emailTypeTotalCnt", map);
+		return count;
+	}
+	
+	@Override
+	public List<JoaHelpQuestionDTO> emailSerchList(Map map) {
+		List<JoaHelpQuestionDTO> list = sqlMap.selectList("emailSerchList",map);
+		return list;
+	}
+	
+	@Override
+	public int emailSerchTotalCnt(Map map) {
+		int count = sqlMap.selectOne("emailSerchTotalCnt", map);
+		return count;
+	}
 }

@@ -25,4 +25,12 @@ public interface JoaHelpQuestionDAO {
 	public List<JoaHelpQuestionDTO> emailList(Map map);
 	
 	public int emailTotalCnt(String state);
+	
+	public List<JoaHelpQuestionDTO> emailTypeList(Map map);
+	
+	public int emailTypeTotalCnt(Map map);
+	
+	public List<JoaHelpQuestionDTO> emailSerchList(Map map);
+	
+	public int emailSerchTotalCnt(Map map);
 }

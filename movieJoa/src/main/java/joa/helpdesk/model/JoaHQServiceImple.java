@@ -108,5 +108,53 @@ public class JoaHQServiceImple implements JoaHQService {
 		int count = JoaHelpQuestionDao.emailTotalCnt(state);
 		return count;
 	}
-
+	
+	@Override
+	public List<JoaHelpQuestionDTO> emailTypeList(String state, String hqt_type, int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		map.put("hqt_type", hqt_type);
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.emailTypeList(map);
+		return list;
+	}
+	
+	@Override
+	public int emailTypeTotalCnt(String hqt_type, String state) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		map.put("hqt_type", hqt_type);
+		int count = JoaHelpQuestionDao.emailTypeTotalCnt(map);
+		return count;
+	}
+	
+	@Override
+	public List<JoaHelpQuestionDTO> emailSerchList(String state, String hqt_type, String hqt_region, String hqt_cinema,
+			int cp, int ls) {
+		int start = (cp-1)*ls+1;
+		int end = cp*ls;
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		map.put("hqt_type", hqt_type);
+		map.put("hqt_region", hqt_region);
+		map.put("hqt_cinema", hqt_cinema);
+		map.put("start", start);
+		map.put("end", end);
+		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.emailSerchList(map);
+		return list;
+	}
+	
+	@Override
+	public int emailSerchTotalCnt(String state, String hqt_type, String hqt_region, String hqt_cinema) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		map.put("hqt_type", hqt_type);
+		map.put("hqt_region", hqt_region);
+		map.put("hqt_cinema", hqt_cinema);
+		int count = JoaHelpQuestionDao.emailSerchTotalCnt(map);
+		return count;
+	}
 }

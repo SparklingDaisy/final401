@@ -91,7 +91,7 @@ public class JoaHelpDeskController {
 		return mav;
 	}
 	@RequestMapping("manyHelpSerch.do")
-	public ModelAndView manyHelpSerch(@RequestParam(value="keyword")String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
+	public ModelAndView manyHelpSerch(@RequestParam(value="keyword", required=false)String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
 		String backA_color = "background-color: #F05650";
 		
 		int totalCnt=joaMHService.serchManyHelpListTotalCnt(keyword);
@@ -135,7 +135,7 @@ public class JoaHelpDeskController {
 		int totalCnt=joaMHService.manyHelpTypeTotalCnt(type);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("adminManyHelp.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("adminManyHelp.do?type="+type, totalCnt, listSize, pageSize, cp);
 		List<JoaManyHelpDTO> list = joaMHService.manyHelpType(type, cp, listSize);
 		ModelAndView mav = new ModelAndView();
 
@@ -164,14 +164,14 @@ public class JoaHelpDeskController {
 		return mav;
 	}
 	
-	@RequestMapping("/adminSerchManyHelp")
+	@RequestMapping("/adminSerchManyHelp.do")
 	public ModelAndView adminSerchManyHelp(@RequestParam(value="keyword")String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
 		String backA_color = "background-color: #F05650";
 		
 		int totalCnt=joaMHService.serchManyHelpListTotalCnt(keyword);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("adminSerchManyHelp", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.PageModule.makePage("adminSerchManyHelp.do?keword="+keyword, totalCnt, listSize, pageSize, cp);
 		
 		ModelAndView mav = new ModelAndView();
 		List<JoaManyHelpDTO> list = joaMHService.serchManyHelpList(keyword, cp, listSize);
@@ -220,7 +220,7 @@ public class JoaHelpDeskController {
 		return mav;
 	}
 	@RequestMapping("/manyBorderDelete.do")
-	public ModelAndView manyBorderDelete(@RequestParam(value="idx")int idx) {
+	public ModelAndView manyBorderDelete(@RequestParam(value="idx", defaultValue = "1")int idx) {
 		int result = joaMHService.deleteManyHelp(idx);
 		String msg = result>0?"자주찾는 질문 게시글이 정상적으로 삭제되었습니다.":"자주찾는 질문 게시글 삭제에 실패했습니다. 관리자에게 문의바랍니다.";
 		ModelAndView mav =new ModelAndView();
@@ -275,13 +275,13 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/serchNotice.do")
-	public ModelAndView serchHelpQuestion(@RequestParam(value="keyword")String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
+	public ModelAndView serchHelpQuestion(@RequestParam(value="keyword", required = false)String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
 		String backA_color = "background-color: #F05650";
 		
 		int totalCnt=joaNTService.serchNoticeTotalCnt(keyword);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.Sub_PageModule.makePage("serchNotice.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("serchNotice.do?"+keyword, totalCnt, listSize, pageSize, cp);
 		
 		List<JoaNoticeDTO> list = joaNTService.serchNoticeList(keyword, cp, pageSize);
 		ModelAndView mav = new ModelAndView();
@@ -292,7 +292,7 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/noticeBorder.do")
-	public ModelAndView helpQuestionBorder(@RequestParam(value="idx")int idx) {
+	public ModelAndView helpQuestionBorder(@RequestParam(value="idx", defaultValue = "1")int idx) {
 		JoaNoticeDTO dto = joaNTService.noticeBorder(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", dto);
@@ -336,7 +336,7 @@ public class JoaHelpDeskController {
 		int totalCnt=joaNTService.noticeTypeTotalCnt(type);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("noticeAdminType.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("noticeAdminType.do?type="+type, totalCnt, listSize, pageSize, cp);
 		
 		List<JoaNoticeDTO> list = joaNTService.noticeType(type, cp, pageSize);
 		
@@ -348,13 +348,13 @@ public class JoaHelpDeskController {
 
 	
 	@RequestMapping("/serchAdminNotice.do")
-	public ModelAndView serchAdminNotice(@RequestParam(value="keyword")String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
+	public ModelAndView serchAdminNotice(@RequestParam(value="keyword", required = false)String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
 		String backA_color = "background-color: #F05650";
 		
 		int totalCnt=joaNTService.serchNoticeTotalCnt(keyword);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.PageModule.makePage("serchAdminNotice.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("serchAdminNotice.do?"+keyword, totalCnt, listSize, pageSize, cp);
 		
 		List<JoaNoticeDTO> list = joaNTService.serchNoticeList(keyword, cp, pageSize);
 		ModelAndView mav = new ModelAndView();
@@ -385,7 +385,7 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/noticeDelete.do")
-	public ModelAndView noticeDelete(@RequestParam(value="idx") int idx) {
+	public ModelAndView noticeDelete(@RequestParam(value="idx", defaultValue = "1") int idx) {
 		ModelAndView mav = new ModelAndView();
 		int result = joaNTService.deleteNotice(idx);
 		String msg = result>0?"공지게시판에 게시글이 삭제되었습니다.":"공지게시판 게시글 삭제에 실패하였습니다.관리자에게 문의바랍니다.";
@@ -426,6 +426,7 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/adminEmailHelp.do")
 	public ModelAndView adminEmailHelp(@RequestParam(value =  "cp", defaultValue = "1")int cp) {
+		String backA_color = "background-color: #F05650";
 		String state = "미답변";
 		ModelAndView mav = new ModelAndView();
 		int totalCnt=joaHQService.emailTotalCnt(state);
@@ -434,7 +435,110 @@ public class JoaHelpDeskController {
 		String pageStr=joa.page.PageModule.makePage("adminEmailHelp.do", totalCnt, listSize, pageSize, cp);
 		
 		List<JoaHelpQuestionDTO> list = joaHQService.emailList(state, cp, pageSize);
+		mav.addObject("backA_color",backA_color);
+		mav.addObject("pageStr", pageStr);
+		mav.addObject("list", list);
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMEmailHelp");
+		return mav;
+	}
+	
+	@RequestMapping("/adminEmailType.do")
+	public ModelAndView adminEmailType(@RequestParam(value =  "cp", defaultValue = "1")int cp,@RequestParam(value="hqt_type", required = false)String hqt_type) {
 		
+		ModelAndView mav = new ModelAndView();
+		
+		if(hqt_type.equals("편의")) {
+			String backB_color = "background-color: #F05650";
+			mav.addObject("backB_color", backB_color);
+		}else if(hqt_type.equals("결제")) {
+			String backC_color = "background-color: #F05650";
+			mav.addObject("backC_color", backC_color);
+		}else if(hqt_type.equals("이벤트")) {
+			String backD_color = "background-color: #F05650";
+			mav.addObject("backD_color", backD_color);
+		}else if(hqt_type.equals("분실")) {
+			String backE_color = "background-color: #F05650";
+			mav.addObject("backE_color", backE_color);
+		}else if(hqt_type.equals("서비스")) {
+			String backF_color = "background-color: #F05650";
+			mav.addObject("backF_color", backF_color);
+		}
+		
+		String state="미답변";
+		int totalCnt=joaHQService.emailTypeTotalCnt(hqt_type,state);
+		int listSize=5;
+		int pageSize=5;
+		String pageStr=joa.page.Sub_PageModule.makePage("adminEmailType.do?hqt_type="+hqt_type, totalCnt, listSize, pageSize, cp);
+		
+		List<JoaHelpQuestionDTO> list = joaHQService.emailTypeList(state, hqt_type, cp, pageSize);
+		mav.addObject("pageStr", pageStr);
+		mav.addObject("list", list);
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMEmailHelp");
+		return mav;
+	}
+	
+	@RequestMapping("/adminEmailSerch.do")
+	public ModelAndView adminEmailSerch(@RequestParam(value =  "cp", defaultValue = "1")int cp, @RequestParam(value="hqt_type", required = false)String hqt_type, @RequestParam(value="hqt_region", required = false)String hqt_region, @RequestParam(value="hqt_cinema", required = false)String hqt_cinema) {
+		String state ="미답변";
+		ModelAndView mav = new ModelAndView();
+		String pagename=null;
+		if(hqt_type==null||hqt_type.equals("")) {
+			
+			String backA_color = "background-color: #F05650";
+			mav.addObject("backA_color", backA_color);
+			
+			hqt_type="hqt_type is not null";
+		}else{
+			
+			if(hqt_type.equals("편의")) {
+				String backB_color = "background-color: #F05650";
+				mav.addObject("backB_color", backB_color);
+			}else if(hqt_type.equals("결제")) {
+				String backC_color = "background-color: #F05650";
+				mav.addObject("backC_color", backC_color);
+			}else if(hqt_type.equals("이벤트")) {
+				String backD_color = "background-color: #F05650";
+				mav.addObject("backD_color", backD_color);
+			}else if(hqt_type.equals("분실")) {
+				String backE_color = "background-color: #F05650";
+				mav.addObject("backE_color", backE_color);
+			}else if(hqt_type.equals("서비스")) {
+				String backF_color = "background-color: #F05650";
+				mav.addObject("backF_color", backF_color);
+			}
+			
+			pagename="adminEmailSerch.do?hqt_type="+hqt_type;
+			hqt_type="hqt_type='"+hqt_type+"'";
+		}
+		if(hqt_region==null||hqt_region.equals("")||hqt_region.equals("지역선택")) {
+			hqt_region="hqt_region is not null";
+		}else {
+			
+			if(hqt_type.equals("hqt_type is not null")) {
+				pagename="adminEmailSerch.do?hqt_region="+hqt_region;
+			}else {
+				pagename+="&hqt_region="+hqt_region;
+			}
+			hqt_region="hqt_region='"+hqt_region+"'";
+		}
+		if(hqt_cinema==null||hqt_cinema.equals("")||hqt_cinema.equals("영화관선택")) {
+			hqt_cinema="hqt_cinema is not null";
+		}else {
+			pagename+="&hqt_cinema="+hqt_cinema;
+			hqt_cinema="hqt_cinema='"+hqt_cinema+"'";
+		}
+		
+		int totalCnt=joaHQService.emailSerchTotalCnt(state, hqt_type, hqt_region, hqt_cinema);
+		int listSize=5;
+		int pageSize=5;
+		String pageStr=null;
+		if(hqt_type.equals("hqt_type is not null") && hqt_region.equals("hqt_region is not null") && hqt_cinema.equals("hqt_cinema is not null")) {
+			pageStr=joa.page.PageModule.makePage("adminEmailHelp.do", totalCnt, listSize, pageSize, cp);
+		}else {
+			pageStr=joa.page.Sub_PageModule.makePage(pagename, totalCnt, listSize, pageSize, cp);
+		}
+
+		List<JoaHelpQuestionDTO> list = joaHQService.emailSerchList(state, hqt_type, hqt_region, hqt_cinema, cp, pageSize);
 		mav.addObject("pageStr", pageStr);
 		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMEmailHelp");
@@ -442,7 +546,7 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/adminEmailBorder.do")
-	public ModelAndView adminEmailBorder(int idx) {
+	public ModelAndView adminEmailBorder(@RequestParam(value="idx",defaultValue = "1")int idx) {
 		ModelAndView mav = new ModelAndView();
 		JoaHelpQuestionDTO dto = joaHQService.QuestionBorder(idx);
 		mav.addObject("dto", dto);
@@ -490,7 +594,7 @@ public class JoaHelpDeskController {
 	//1:1 문의 관리자 페이지
 	
 	@RequestMapping("/serchMemberHelp.do")
-	public ModelAndView serchMemberHelp(HttpServletRequest request, int cp) {
+	public ModelAndView serchMemberHelp(HttpServletRequest request,@RequestParam(value="cp",defaultValue = "1") int cp) {
 		
 		String type= request.getParameter("type");
 		String state = request.getParameter("state");
@@ -523,7 +627,7 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/memberHelpBorder.do")
-	public ModelAndView memberHelpBorder(int idx) {
+	public ModelAndView memberHelpBorder(@RequestParam(value="idx",defaultValue = "1") int idx) {
 		ModelAndView mav = new ModelAndView();
 		JoaHelpQuestionDTO dto = joaHQService.QuestionBorder(idx);
 		mav.addObject("dto", dto);
@@ -571,7 +675,7 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/topAdminBorder.do")
-	public ModelAndView topAdminBorder(int idx) {
+	public ModelAndView topAdminBorder(@RequestParam(value="idx",defaultValue = "1") int idx) {
 		ModelAndView mav = new ModelAndView();
 		JoaHelpQuestionDTO dto = joaHQService.QuestionBorder(idx);
 		mav.addObject("dto", dto);
