@@ -61,7 +61,7 @@
 			<td colspan="7"><hr><br></td>
 			</tr>
 			<tr>
-			<td colspan="7" align="right"><input type="button" value="목차" class="bordersubmit"></td>
+			<td colspan="7" align="right"><input type="button" value="목차" class="bordersubmit" onclick="location.href='adminHelpDesk.do'"></td>
 			</tr>
 		</table>
 	</div>

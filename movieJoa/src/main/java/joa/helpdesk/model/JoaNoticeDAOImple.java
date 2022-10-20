@@ -39,19 +39,19 @@ public class JoaNoticeDAOImple implements JoaNoticeDAO {
 
 	@Override
 	public List<JoaNoticeDTO> NoticeList(Map map) {
-		List<JoaNoticeDTO> list = sqlMap.selectList("NoticeList");
+		List<JoaNoticeDTO> list = sqlMap.selectList("NoticeList",map);
 		return list;
 	}
 
 	@Override
 	public List<JoaNoticeDTO> noticeType(Map map) {
-		List<JoaNoticeDTO> list = sqlMap.selectList("NoticeType");
+		List<JoaNoticeDTO> list = sqlMap.selectList("NoticeType",map);
 		return list;
 	}
 	
 	@Override
 	public List<JoaNoticeDTO> serchNoticeList(Map map) {
-		List<JoaNoticeDTO> list = sqlMap.selectList("SerchNoticeList");
+		List<JoaNoticeDTO> list = sqlMap.selectList("SerchNoticeList",map);
 		return list;
 	}
 
@@ -69,13 +69,13 @@ public class JoaNoticeDAOImple implements JoaNoticeDAO {
 	
 	@Override
 	public int noticeTypeTotalCnt(Map map) {
-		int count = sqlMap.selectOne("NoticeTypeTotalCnt");
+		int count = sqlMap.selectOne("NoticeTypeTotalCnt",map);
 		return count;
 	}
 	
 	@Override
 	public int serchNoticeTotalCnt(Map map) {
-		int count = sqlMap.selectOne("SerchNoticeListTotalCnt");
+		int count = sqlMap.selectOne("SerchNoticeListTotalCnt",map);
 		return count;
 	}
 

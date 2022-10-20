@@ -198,11 +198,12 @@
 	<insert id="NoticeInsert" parameterType="joa.helpdesk.model.JoaNoticeDTO">
 			insert into
 			joa_notice
-			values(joa_notice_idx.nextval,
+			values(joa_notice_ntc_idx.nextval,
 			#{ntc_type},
 			#{ntc_subject},
 			#{ntc_content},
 			#{ntc_file},
+			0,
 			sysdate,
 			sysdate
 			)
@@ -224,13 +225,11 @@
 		ntc_type=#{ntc_type},
 		ntc_subject=#{ntc_subject},
 		ntc_content=#{ntc_content},
-		ntc_file=#{ntc_file},
-		ntc_writedate=#{ntc_writedate},
 		ntc_rewritedate=sysdate
 		where ntc_idx=#{ntc_idx}
 	</update>
 	
-	<select id="NoticeList" parameterType="Map" resultType="joa.helpdesk.model.JoaNoticeDTO">
+	<select id="NoticeList" parameterType="map" resultType="joa.helpdesk.model.JoaNoticeDTO">
 		select
 			*
 		from
@@ -240,7 +239,7 @@
 	</select>
 	
 	
-	<select id="NoticeType" parameterType="Map" resultType="joa.helpdesk.model.JoaNoticeDTO">
+	<select id="NoticeType" parameterType="map" resultType="joa.helpdesk.model.JoaNoticeDTO">
 		select
 			*
 		from
@@ -257,7 +256,7 @@
 			where ntc_idx=#{idx}
 	</select>
 	
-	<select id="SerchNoticeList" parameterType="Map" resultType="joa.helpdesk.model.JoaNoticeDTO">
+	<select id="SerchNoticeList" parameterType="map" resultType="joa.helpdesk.model.JoaNoticeDTO">
 	
 		select
 			*
@@ -297,12 +296,12 @@
   		where hqt_state=#{state} and hqt_email IS NOT NULL and ${hqt_type} and ${hqt_region} and ${hqt_cinema}
 	</select>
   	
-  	<select id="ManyHelpTypeTotalCnt" parameterType="Map" resultType="Integer">
+  	<select id="ManyHelpTypeTotalCnt" parameterType="map" resultType="Integer">
   	select count(*) from joa_lookingforquestion
   	where lfq_type=#{type}
   	</select>
   	
-  	<select id="SerchManyHelpListTotalCnt" parameterType="Map" resultType="Integer">
+  	<select id="SerchManyHelpListTotalCnt" parameterType="map" resultType="Integer">
   	select count(*) from joa_lookingforquestion
   	where lfq_content LIKE '%'||#{keyword}||'%'
   	</select>
@@ -311,13 +310,13 @@
   	select count(*) from joa_notice
   	</select>
 	
-		<select id="NoticeTypeTotalCnt" parameterType="Map"  resultType="Integer">
+		<select id="NoticeTypeTotalCnt" parameterType="map"  resultType="Integer">
   	select count(*) from joa_notice
   	where ntc_type=#{type}
   	</select>
 	
 	
-	<select id="SerchNoticeListTotalCnt" parameterType="Map" resultType="Integer">
+	<select id="SerchNoticeListTotalCnt" parameterType="map" resultType="Integer">
   	select count(*) from joa_notice
   	where ntc_content LIKE '%'||#{keyword}||'%'
   	</select>

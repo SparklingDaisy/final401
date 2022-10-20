@@ -46,7 +46,7 @@ public class JoaHelpQuestionDAOImple implements JoaHelpQuestionDAO {
 	
 	@Override
 	public int answerQuestion(JoaHelpQuestionDTO dto) {
-		int result = sqlMap.insert("questionBorder", dto);
+		int result = sqlMap.insert("questionAnswer", dto);
 		
 		return result;
 	

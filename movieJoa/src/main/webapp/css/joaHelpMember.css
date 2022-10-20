@@ -1,9 +1,15 @@
 @charset "UTF-8";
+
+.selectbar{
+	height:30px;
+	width: 110px;
+}
+
 .helpMenu_member{
 	position: absolute;
-	top:188px;
+	top:0px;
 	float: left;
-	left: 222px;
+	left: 70px;
 	border: 0px; 
 	padding: 0px;
 	overflow: auto;

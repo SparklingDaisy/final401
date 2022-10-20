@@ -16,7 +16,7 @@
 <div class="helpDesk_main">
 <div class="manyHelpMain">
 	<h4 class="NoticeMainSubject">공지사항</h4>
-	<div align="right"><input type="button" value="게시글 작성" class="writebutton"></div>
+	<div align="right"><input type="button" value="게시글 작성" class="writebutton" onclick="location.href='noticeWriteMove.do'"></div>
 	<div class="manyHelpIntroduce">공지게시판 입니다.<br>
 	관리자들은 문제 발견 시 최고 관리자에게 보고바랍니다.</div>
 	<br>
@@ -52,8 +52,13 @@
 				</tr>
 			</c:if>
 		<c:forEach var="dto" items="${list }">
+			<c:url var="noticeUrl" value="adminNoticeBorder.do">
+					<c:param name="idx">
+					${dto.ntc_idx }
+					</c:param>
+				</c:url>
 			<tr>
-				<td class="manyHelpBordertype">${dto.ntc_type }</td><td>${dto.ntc_subject }</td><td class="manyHelpBorderReadnum">${dto.ntc_readnum }</td>
+				<td class="manyHelpBordertype">${dto.ntc_type }</td><td><a href="${noticeUrl }">${dto.ntc_subject }</a></td><td class="manyHelpBorderReadnum">${dto.ntc_readnum }</td>
 			</tr>
 		</c:forEach>
 			</tbody>

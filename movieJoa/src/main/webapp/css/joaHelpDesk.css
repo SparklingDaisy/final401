@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 .writebutton{
+	position: absolute;
+	left:800px;
 	background-color: #F05650;
 	color: white;
 	cursor:pointer;
@@ -186,6 +188,9 @@
 }
 .readnum{
 	width:110px;
+}
+.readnumW{
+	width:150px;
 }
 .borderhead{
 	height:50px;

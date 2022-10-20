@@ -308,7 +308,7 @@ public class JoaHelpDeskController {
 	}
 	
 	@RequestMapping("/noticeBorder.do")
-	public ModelAndView helpQuestionBorder(@RequestParam(value="idx", defaultValue = "1")int idx) {
+	public ModelAndView noticeBorder(@RequestParam(value="idx", defaultValue = "1")int idx) {
 		JoaNoticeDTO dto = joaNTService.noticeBorder(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto", dto);
@@ -328,6 +328,7 @@ public class JoaHelpDeskController {
 		
 		List<JoaNoticeDTO> list = joaNTService.NoticeList(cp, listSize);
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("backA_color", backA_color);
 		mav.addObject("pageStr", pageStr);
 		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMNotice");
@@ -380,6 +381,22 @@ public class JoaHelpDeskController {
 		return mav;
 	}
 	
+	@RequestMapping("/adminNoticeBorder.do")
+	public ModelAndView adminNoticeBorder(@RequestParam(value="idx", defaultValue = "1")int idx) {
+		JoaNoticeDTO dto = joaNTService.noticeBorder(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto", dto);
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMNotice_border");
+		return mav;
+	}
+	
+	@RequestMapping("/noticeWriteMove.do")
+	public ModelAndView noticeWriteMove(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMNotice_border_write");
+		return mav;
+	}
+	
 	@RequestMapping("/noticeWrite.do")
 	public ModelAndView noticeWrite(JoaNoticeDTO dto) {
 		int result = joaNTService.addNotice(dto);
@@ -387,6 +404,14 @@ public class JoaHelpDeskController {
 		String msg = result>0?"공지게시판에 게시글이 등록되었습니다.":"공지게시판 게시글 등록에 실패하였습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
+		return mav;
+	}
+	@RequestMapping("/reNoticeWriteMove.do")
+	public ModelAndView reNoticeWriteMove(@RequestParam(value="idx")int idx) {
+		JoaNoticeDTO dto = joaNTService.noticeBorder(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto",dto);
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMNotice_border_ReWrite");
 		return mav;
 	}
 	
@@ -741,6 +766,7 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/answerMemberHelp.do")
 	public ModelAndView answerMemberHelp(JoaHelpQuestionDTO dto) {
+		dto.setHqt_state("답변완료");
 		ModelAndView mav = new ModelAndView();
 		int result = joaHQService.answerQuestion(dto);
 		String msg = result>0?"1:1문의 답변이 정상적으로 등록됬습니다.":"1:1문의 답변 등록에 실패했습니다. 관리자에게 문의바랍니다.";

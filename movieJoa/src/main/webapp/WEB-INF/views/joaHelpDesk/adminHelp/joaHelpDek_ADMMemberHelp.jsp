@@ -54,7 +54,7 @@
 	<br>
 	<form name="memberSerchFM" action="adminSerchList.do">
 	<div class="memberHelpSerch">
-	<select id="type" name="hqt_type">
+	<select id="type" name="hqt_type" class="selectbar">
 			<option selected disabled>구분선택</option>
 			<option value="편의">편의</option>
 		  	<option value="결제">결제</option>
@@ -62,7 +62,7 @@
 		  	<option value="분실">분실</option>
 		  	<option value="서비스">서비스</option>
 	</select>
-	<select id="region" onchange="categoryChange(this)" name="hqt_region">
+	<select id="region" onchange="categoryChange(this)" name="hqt_region" class="selectbar">
 			<option selected disabled>지역선택</option>
 			<option value="서울">서울</option>
 		  	<option value="경기">경기</option>
@@ -70,7 +70,7 @@
 		  	<option value="강원">강원</option>
 		</select>
 		&nbsp;
-		<select id="cinema" name="hqt_cinema">
+		<select id="cinema" name="hqt_cinema" class="selectbar">
 		<option selected disabled>영화관선택</option>
 		
 		</select>
@@ -88,15 +88,12 @@
 		</ul>
 	</div>
 	</div>
-	<br>
-	
-</div>
 	<div class="memberHelpContent">
 	<div>
 		<table class="memberHelpBorder">
 			<thead>
 				<tr>
-					<th >구분</th>
+					<th>구분</th>
 					<th>제목</th>
 					<th>지역</th>
 					<th>영화관</th>
@@ -109,9 +106,15 @@
 				</tr>
 			</c:if>
 		<c:forEach var="dto" items="${list }">
-		
+			
+			
+			<c:url var="memberHelpUrl" value="memberHelpBorder.do">
+					<c:param name="idx">
+					${dto.hqt_idx }
+					</c:param>
+				</c:url>
 			<tr>
-				<td>${dto.hqt_type }</td><td>${dto.hqt_subject }</td><td >${dto.hqt_region }</td><td>${dto.hqt_cinema }</td>
+				<td>${dto.hqt_type }</td><td><a href="${memberHelpUrl }">${dto.hqt_subject }</a></td><td>${dto.hqt_region }</td><td>${dto.hqt_cinema }</td>
 			</tr>
 		</c:forEach>
 			</tbody>

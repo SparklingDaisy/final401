@@ -57,10 +57,15 @@
 				<th>내용</th>
 				<td colspan="6"><textarea rows="31" cols="76" name="lfq_content"></textarea></td>
 			</tr>
+			<tr>
+			<td colspan="7"><hr><br></td>
+			</tr>
+			<tr>
+			<td colspan="7" align="right"><input type="button" value="목차" class="bordersubmit" onclick="location.href='adminHelpDesk.do'"></td>
+			</tr>
 		</table>
 	</div>
 	</form>
-	<div><input type="button" value="목차"></div>
 	<ul class="helpMenu">
 		<li><a href="adminHelpDesk.do">자주찾는 질문</a></li>
 		<li><a href="adminNotice.do">공지게시판</a></li>
