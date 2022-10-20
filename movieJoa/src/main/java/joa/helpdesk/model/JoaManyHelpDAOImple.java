@@ -24,13 +24,13 @@ public class JoaManyHelpDAOImple implements JoaManyHelpDAO {
 	@Override
 	public int deleteManyHelp(int idx) {
 		int result = sqlMap.insert("ManyHelpDelete",idx);
-		return 0;
+		return result;
 	}
 
 	@Override
 	public int rewriteManyHelp(JoaManyHelpDTO dto) {
 		int result = sqlMap.insert("ManyHelpUpdate",dto);
-		return 0;
+		return result;
 	}
 
 	@Override

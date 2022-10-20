@@ -16,7 +16,7 @@
 <section>
 <div class="helpDesk_main">
 <div class="manyHelpMain">
-	<h4 class="manyHelpSubject">자주찾는 질문</h4> <div align="right"><input type="button" value="게시글 작성" class="writebutton"></div>
+	<h4 class="manyHelpSubject">자주찾는 질문</h4> <div align="right"><input type="button" value="게시글 작성" class="writebutton" onclick="location.href='manyWrite.do'"></div>
 	<div class="manyHelpIntroduce">회원님들께서 가장 자주하시는 질문을 모았습니다.<br>
 	관리자들을 문제 발견 시 최고 관리자에게 보고바랍니다.</div>
 	<br>
@@ -53,12 +53,17 @@
 				<tr>
 					<td colspan="3" align="center">등록된 게시글이 없습니다.</td>
 				</tr>
-			</c:if>
-		<c:forEach var="dto" items="${list }">
-			<tr>
-				<td class="manyHelpBordertype">${dto.lfq_type }</td><td>${dto.lfq_subject }</td><td class="manyHelpBorderReadnum">${dto.lfq_readnum }</td>
-			</tr>
-		</c:forEach>
+			</c:if>	
+			<c:forEach var="dto" items="${list }">
+				<c:url var="manyHelpUrl" value="adminManyHelpBorder.do">
+					<c:param name="idx">
+					${dto.lfq_idx }
+					</c:param>
+				</c:url>
+				<tr>
+					<td class="manyHelpBordertype">${dto.lfq_type }</td><td><a href="${manyHelpUrl }">${dto.lfq_subject }</a></td><td class="manyHelpBorderReadnum">${dto.lfq_readnum }</td>
+				</tr>
+			</c:forEach>
 			</tbody>
 			<tfoot>
 			<tr>

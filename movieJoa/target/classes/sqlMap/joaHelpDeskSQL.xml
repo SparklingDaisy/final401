@@ -91,7 +91,7 @@
     where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
-	<select id="questionBorder" parameterType="Integer">
+	<select id="questionBorder" parameterType="Integer" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
 			select
 			*
 			from
@@ -129,9 +129,9 @@
 			insert into
 			joa_lookingforquestion
 			values(joa_lookingforquestion_lfq_idx.nextval,
-			#{type},
-			#{subject},
-			#{content},
+			#{lfq_type},
+			#{lfq_subject},
+			#{lfq_content},
 			0,
 			sysdate,
 			sysdate
@@ -142,19 +142,18 @@
 		delete
 		from
 		joa_lookingforquestion
-		where lfq_idx=#{idx}
+		where lfq_idx=#{lfq_idx}
 	</delete>
 	
 	<update id="ManyHelpUpdate" parameterType="joa.helpdesk.model.JoaManyHelpDTO">
 		update
 		joa_lookingforquestion
 		set
-		lfq_type=#{type},
-		lfq_subject=#{subject},
-		lfq_content=#{content},
-		lfq_writedate=#{writedate},
+		lfq_type=#{lfq_type},
+		lfq_subject=#{lfq_subject},
+		lfq_content=#{lfq_content},
 		lfq_rewritedate=sysdate
-		where lfq_idx=#{idx}
+		where lfq_idx=#{lfq_idx}
 	</update>
 	
 	<select id="ManyHelpList" parameterType="Map" resultType="joa.helpdesk.model.JoaManyHelpDTO">
@@ -178,7 +177,7 @@
     where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
-	<select id="ManyHelpBorder" parameterType="Integer">
+	<select id="ManyHelpBorder" parameterType="Integer" resultType="joa.helpdesk.model.JoaManyHelpDTO">
 			select
 			*
 			from
@@ -200,10 +199,10 @@
 			insert into
 			joa_notice
 			values(joa_notice_idx.nextval,
-			#{type},
-			#{subject},
-			#{content},
-			#{file},
+			#{ntc_type},
+			#{ntc_subject},
+			#{ntc_content},
+			#{ntc_file},
 			sysdate,
 			sysdate
 			)
@@ -222,13 +221,13 @@
 		update
 		joa_notice
 		set
-		ntc_type=#{type},
-		ntc_subject=#{subject},
-		ntc_content=#{content},
-		ntc_file=#{file},
-		ntc_writedate=#{writedate},
+		ntc_type=#{ntc_type},
+		ntc_subject=#{ntc_subject},
+		ntc_content=#{ntc_content},
+		ntc_file=#{ntc_file},
+		ntc_writedate=#{ntc_writedate},
 		ntc_rewritedate=sysdate
-		ntc_where ntc_idx=#{idx}
+		where ntc_idx=#{ntc_idx}
 	</update>
 	
 	<select id="NoticeList" parameterType="Map" resultType="joa.helpdesk.model.JoaNoticeDTO">
@@ -250,7 +249,7 @@
     where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 	
-	<select id="NoticeBorder">
+	<select id="NoticeBorder" parameterType="Integer" resultType="joa.helpdesk.model.JoaNoticeDTO">
 			select
 			*
 			from

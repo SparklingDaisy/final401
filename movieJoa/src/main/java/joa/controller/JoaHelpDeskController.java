@@ -90,7 +90,7 @@ public class JoaHelpDeskController {
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp");
 		return mav;
 	}
-	@RequestMapping("manyHelpSerch.do")
+	@RequestMapping("/manyHelpSerch.do")
 	public ModelAndView manyHelpSerch(@RequestParam(value="keyword", required=false)String keyword, @RequestParam(value =  "cp", defaultValue = "1")int cp) {
 		String backA_color = "background-color: #F05650";
 		
@@ -105,6 +105,15 @@ public class JoaHelpDeskController {
 		mav.addObject("backA_color",backA_color);
 		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp");
+		return mav;
+	}
+	
+	@RequestMapping("/manyHelpBorder.do")
+	public ModelAndView ManyHelpBorder(@RequestParam(value="idx")int idx) {
+		JoaManyHelpDTO dto = joaMHService.ManyHelpBorder(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto",dto);
+		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp_border");
 		return mav;
 	}
 	
@@ -182,21 +191,19 @@ public class JoaHelpDeskController {
 		return mav;
 	}
 	
-	@RequestMapping("/manyHelpBorder.do")
-	public ModelAndView ManyHelpBorder(@RequestParam(value="idx")int idx) {
-		JoaManyHelpDTO dto = joaMHService.ManyHelpBorder(idx);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("dto",dto);
-		mav.setViewName("joaHelpDesk/memberHelp/joaHelpDek_manyHelp_border");
-		return mav;
-	}
-	
 	@RequestMapping("/adminManyHelpBorder.do")
 	public ModelAndView adminManyHelpBorder(@RequestParam(value="idx")int idx) {
 		JoaManyHelpDTO dto = joaMHService.ManyHelpBorder(idx);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("dto",dto);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMManyHelp_border");
+		return mav;
+	}
+	
+	@RequestMapping("/manyWrite.do")
+	public ModelAndView manyWrite(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMManyHelp_border_write");
 		return mav;
 	}
 	
@@ -207,6 +214,15 @@ public class JoaHelpDeskController {
 		String msg = result>0?"자주찾는 질문 게시글이 정상적으로 등록되었습니다.":"자주찾는 질문 게시글 등록이 실패했습니다. 관리자에게 문의바랍니다.";
 		mav.addObject("msg", msg);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_MSG");
+		return mav;
+	}
+	
+	@RequestMapping("/manyBorderReWriteMove.do")
+	public ModelAndView manyBorderReWriteMove(@RequestParam(value="idx")int idx) {
+		JoaManyHelpDTO dto = joaMHService.ManyHelpBorder(idx);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("dto",dto);
+		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMManyHelp_border_ReWrite");
 		return mav;
 	}
 	
