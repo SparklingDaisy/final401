@@ -130,11 +130,15 @@ h2 {
 </style>
 <script>
 function validateLogin(){
-	var adminStr=document.loginForm.mem_id.value;
+	var adminStr=document.getElementById('seperateId').value;
 	if(adminStr.indexOf('admin_')!=-1){
+		document.getElementById('seperateId').setAttribute('name','admin_id');
+		document.getElementById('seperatePwd').setAttribute('name','admin_pwd');
 		document.loginForm.action='adminMemberLoginSubmit.do';
 		document.loginForm.submit();
 	}else{
+		document.getElementById('seperateId').setAttribute('name','mem_id');
+		document.getElementById('seperatePwd').setAttribute('name','mem_pwd');
 		document.loginForm.action='memberLoginSubmit.do';
 		document.loginForm.submit();
 	}
@@ -154,11 +158,11 @@ function validateLogin(){
             </div>
             <div class="login_id">
                 <h4>ID</h4>
-                <input type="text" placeholder="Id" name="mem_id">
+                <input type="text" placeholder="Id"  id="seperateId">
             </div>
             <div class="login_pw">
                 <h4>Password</h4>
-                <input type="password" placeholder="Password" name="mem_pwd">
+                <input type="password" placeholder="Password"  id="seperatePwd">
             </div>
             <div class="login_etc">
                 <div class="checkbox">

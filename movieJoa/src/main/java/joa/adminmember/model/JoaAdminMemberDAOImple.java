@@ -44,7 +44,7 @@ public class JoaAdminMemberDAOImple implements JoaAdminMemberDAO {
 		return result;
 	}
 	@Override
-	public JoaAdminMemberDTO adminMemberLogin(JoaMemberDTO dto) {
+	public JoaAdminMemberDTO adminMemberLogin(JoaAdminMemberDTO dto) {
 		JoaAdminMemberDTO login_dto=sqlMap.selectOne("adminMemberLoginQuery",dto);
 		return login_dto;
 	}
@@ -107,5 +107,34 @@ public class JoaAdminMemberDAOImple implements JoaAdminMemberDAO {
 	public int adminDelete(String id) {
 		int result=sqlMap.delete("adminDeleteQuery",id);
 		return result;
+	}
+	@Override
+	public int memberAllCount() {
+		int result=sqlMap.selectOne("memberAllCountQuery");
+		return result;
+	}
+	@Override
+	public int currentMemberJoin() {
+		int result=sqlMap.selectOne("currentMemberJoinQuery");
+		return result;
+	}
+	@Override
+	public int adminAllCount() {
+		int result=sqlMap.selectOne("adminAllCountQuery");
+		return result;
+	}
+	@Override
+	public int memberGenderCount() {
+		int result=sqlMap.selectOne("memberGenderCountQuery");
+		return result;
+	}
+	@Override
+	public int[] memberAgeCount() {
+		int arr[]=new int[5];
+		for(int i=0; i<5; i++) {
+			int result=sqlMap.selectOne("memberAgeCountQuery"+(i+1));
+			arr[i]=result;
+		}
+		return arr;
 	}
 }

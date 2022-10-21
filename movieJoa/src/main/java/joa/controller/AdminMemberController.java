@@ -86,19 +86,31 @@ public class AdminMemberController {
 		return "admin/adminMember/adminMember_main";
 	}
 	@RequestMapping("/adminMemberLoginSubmit.do")
-	public ModelAndView adminMemberLogin(JoaMemberDTO dto, HttpServletRequest req) {
+	public ModelAndView adminMemberLogin(JoaAdminMemberDTO dto, HttpServletRequest req) {
 		JoaAdminMemberDTO login_dto=joaAdminMemberDao.adminMemberLogin(dto);
+		int memberAllCount=joaAdminMemberDao.memberAllCount();
+		int currentMemberJoin=joaAdminMemberDao.currentMemberJoin();
+		int adminAllCount=joaAdminMemberDao.adminAllCount();
+		int memberGenderCount=joaAdminMemberDao.memberGenderCount();
+		int arr[]=new int[5];
+		arr=joaAdminMemberDao.memberAgeCount();
 		HttpSession session=req.getSession();
+		ModelAndView mav=new ModelAndView();
 		String msg="";
 		if(login_dto!=null) {
 			msg="로그인 성공";
 			session.setAttribute("adminInfo",login_dto);
+			mav.addObject("currentMemberJoin",currentMemberJoin);
+			mav.addObject("memberAllCount", memberAllCount);
+			mav.addObject("adminAllCount", adminAllCount);
+			mav.addObject("memberGenderCount", memberGenderCount);
+			mav.addObject("memberAgeCount", arr);
+			mav.setViewName("admin/adminMember/adminMember_main");
 		}else {
 			msg="로그인 실패!";
+			mav.addObject("msg",msg);
+			mav.setViewName("admin/adminMember/adminMember_msg");
 		}
-		ModelAndView mav=new ModelAndView();
-		mav.addObject("msg",msg);
-		mav.setViewName("admin/adminMember/adminMember_main");
 		return mav;
 	}
 	@RequestMapping("/adminLogout.do")
@@ -157,4 +169,9 @@ public class AdminMemberController {
 		mav.setViewName("admin/adminMember/adminMember_msg");
 		return mav;
 	}
+	@RequestMapping("/adminDetail.do")
+	public String adminDetailGo() {
+		return "admin/adminMember/adminMember_detail";
+	}
+
 }

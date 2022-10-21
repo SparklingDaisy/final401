@@ -103,7 +103,7 @@ a{
                         <a href="adminSearch.do">관리자조회</a>                        
                     </li>
                     <li>
-                        <a href="#">2차메뉴아이템 4</a>                        
+                        <a href="adminDetail.do">상세조회</a>                        
                     </li>
                 </ul>
             </li>

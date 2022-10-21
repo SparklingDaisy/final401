@@ -11,7 +11,7 @@ public interface JoaAdminMemberDAO {
 	public int adminMemberUpdateGo(JoaMemberDTO dto);
 	public int adminMemberDelete(String id);
 	public int adminRegisterInsert(JoaAdminMemberDTO dto);
-	public JoaAdminMemberDTO adminMemberLogin(JoaMemberDTO dto);
+	public JoaAdminMemberDTO adminMemberLogin(JoaAdminMemberDTO dto);
 	public List<JoaMemberDTO> adminMemberAll();
 	public List<JoaMemberDTO> adminMeberList(int ls,int cp);
 	public int adminMemberTotalCnt();
@@ -21,4 +21,9 @@ public interface JoaAdminMemberDAO {
 	public JoaAdminMemberDTO adminUpdate(String id);
 	public int adminUpdateGo(JoaAdminMemberDTO dto);
 	public int adminDelete(String id);
+	public int memberAllCount();
+	public int currentMemberJoin();
+	public int adminAllCount();
+	public int memberGenderCount();
+	public int[] memberAgeCount();
 }
