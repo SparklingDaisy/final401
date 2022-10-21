@@ -22,5 +22,10 @@ public class JoaMemberDAOImple implements JoaMemberDAO {
 		
 		return sqlMap.selectOne("memberLogin", dto);
 	}
+	@Override
+	public int memberIdCheck(String id) {
+		int result=sqlMap.selectOne("memberIdCheckQuery",id);
+		return result;
+	}
 
 }

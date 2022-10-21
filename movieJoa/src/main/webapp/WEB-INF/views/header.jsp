@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
     ul, ol, li { list-style:none; margin:0; padding:0; }
@@ -26,6 +26,16 @@ function openLogin(){
 			<a href="index.do"><h1>MJOA</h1></a>
 		</div>
 		<div class="nav_menu">
+
+			<c:if test="${userInfo.mem_id==null }">
+			<a href="memberLogin.do"><span class="material-symbols-outlined">person</span>로그인</a>
+			</c:if>
+			<c:if test="${userInfo.mem_id!=null }">
+			<a href="memberLogout.do"><span class="material-symbols-outlined">person</span>로그아웃</a>
+			</c:if>
+
+			<a href="memberJoin.do"><span class="material-symbols-outlined">person_add</span>회원가입</a>
+			<a href="myPage.do"><span class="material-symbols-outlined">account_circle</span>마이페이지</a>
 			<a href="#"><span class="material-symbols-outlined">lock</span>로그인</a>
 			<a href="memberJoin.do"><span class="material-symbols-outlined">person_add</span>회원가입</a>		
 			<a href="helpDest.do"><span class="material-symbols-outlined">support_agent</span>고객센터</a>
@@ -44,8 +54,8 @@ function openLogin(){
 				</li>
 				<li class="menu2"><a href="#">극장</a>
 					<ul class="menu2_s submenu">
-					    <li>극장</li>
-					    <li>예매</li>
+					    <li><a href="joaTheater.do">극장</a></li>
+					    <li><a href="joaBook.do">예매</a></li>
 					</ul>
 				</li>
 				<li class="menu3"><a href="joaStore.do">스토어</a>
