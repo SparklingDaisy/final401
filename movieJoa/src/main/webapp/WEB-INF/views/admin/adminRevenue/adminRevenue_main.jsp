@@ -14,6 +14,7 @@
 	grid-template-columns: 400px 400px 400px;
 	grid-template-rows: 250px 250px;
 	margin:auto 0px;
+	width:80%;
 }
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 * {
