@@ -37,6 +37,15 @@
   	select count(*) from joa_helpquestion
   	</select>
   	
+  	<select id="topQuestionTypeList" parameterType="map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
+			select
+			*
+			from
+			(select rownum as rnum,a.* from
+    (select * from joa_helpquestion where hqt_type=#{hqt_type} order by hqt_idx desc)a)b
+    where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+	</select>
+  	
   	<select id="questionList" parameterType="map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
 			select
 			*
@@ -61,6 +70,15 @@
 			from
 			(select rownum as rnum,a.* from
     (select * from joa_helpquestion where hqt_state=#{state} and hqt_email IS NULL and ${hqt_type} and ${hqt_region} and ${hqt_cinema} order by hqt_idx desc)a)b
+    where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="topQuestionSerchList" parameterType="map" resultType="joa.helpdesk.model.JoaHelpQuestionDTO">
+		select
+			*
+			from
+			(select rownum as rnum,a.* from
+    (select * from joa_helpquestion where ${hqt_state} and ${hqt_type} and ${hqt_region} and ${hqt_cinema} order by hqt_idx desc)a)b
     where rnum<![CDATA[>=]]>#{start} and rnum<![CDATA[<=]]>#{end}
 	</select>
 
@@ -324,5 +342,15 @@
   	<select id="ManyHelpListTotalCnt" resultType="Integer">
   	select count(*) from joa_lookingforquestion
   	</select>
+  	
+  	<select id="topQuestionTypeTotalCnt" parameterType="String"  resultType="Integer">
+  	select count(*) from joa_helpquestion
+  	where hqt_type=#{type}
+  	</select>
+  	
+  	<select id="topQuestionSerchTotalCnt" parameterType="map" resultType="Integer">
+		select count(*) from joa_helpquestion
+  		where ${hqt_state} and ${hqt_type} and ${hqt_region} and ${hqt_cinema}
+	</select>
 	
   </mapper>

@@ -42,4 +42,12 @@ public interface JoaHelpQuestionDAO {
 	
 	public int serchQuestionTotalCnt(Map map);
 	
+	public List<JoaHelpQuestionDTO> topQuestionTypeList(Map map);
+	
+	public int topQuestionTypeTotalCnt(String hqt_type);
+	
+	public List<JoaHelpQuestionDTO> topSerchQuestionList(Map map);
+	
+	public int topSerchQuestionTotalCnt(Map map);
+	
 }
