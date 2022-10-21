@@ -3,14 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<settings>
+
+        <setting name="jdbcTypeForNull" value="NULL"/>
+
+    </settings>
+
 	<mappers>
+	
 		<mapper resource="sqlMap/adminBookSQL.xml"/>
 		<mapper resource="sqlMap/adminEventSQL.xml"/>
 		<mapper resource="sqlMap/adminMemberSQL.xml"/>
 		<mapper resource="sqlMap/adminMovieSQL.xml"/>
 		<mapper resource="sqlMap/adminRevenueSQL.xml"/>
 		<mapper resource="sqlMap/adminReviewSQL.xml"/>
-		<mapper resource="sqlMap/adminStoreSQL.xml"/>
 		<mapper resource="sqlMap/adminTheaterSQL.xml"/>
 		<mapper resource="sqlMap/joaBookSQL.xml"/>
 		<mapper resource="sqlMap/joaCartSQL.xml"/>
@@ -25,5 +32,12 @@
 		<mapper resource="sqlMap/adminCouponSQL.xml"/>
 		<mapper resource="sqlMap/adminOwncouSQL.xml"/>
 	</mappers>
+   
 </configuration>
+
+
+
+ 
+
+
 

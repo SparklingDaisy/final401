@@ -163,8 +163,10 @@
   		<constructor-arg>
 			<ref bean="joaPayDao"/>
 		</constructor-arg>
-   </bean>   
+   </bean>    
    
+   <!-- daos -->
+   <bean id="JoaStoreDao" class="joa.store.model.JoaStoreDAOImple"></bean>
    
    <bean id="JoaHelpQuestionDao" class="joa.helpdesk.model.JoaHelpQuestionDAOImple">
   		<constructor-arg>
@@ -176,6 +178,12 @@
 			<ref bean="sqlSessionTemplate"></ref>
 		</constructor-arg></bean>
    <bean id="JoaNoticeDao" class="joa.helpdesk.model.JoaNoticeDAOImple">
+   	<constructor-arg>
+			<ref bean="sqlSessionTemplate"></ref>
+		</constructor-arg>
+   </bean>
+   
+   <bean id="JoaMypageDao" class="joa.mypage.model.JoaMypageDAOImple">
    	<constructor-arg>
 			<ref bean="sqlSessionTemplate"></ref>
 		</constructor-arg>
@@ -198,6 +206,12 @@
 	<bean id="JoaNTService" class="joa.helpdesk.model.JoaNTServiceImple">
 		<constructor-arg>
 			<ref bean="JoaNoticeDao"></ref>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="JoaMypageService" class="joa.mypage.model.JoaMypageServiceImple">
+		<constructor-arg>
+			<ref bean="JoaMypageDao"></ref>
 		</constructor-arg>
 	</bean>
    
