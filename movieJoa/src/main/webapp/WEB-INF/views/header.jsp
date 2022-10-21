@@ -39,7 +39,6 @@ function openLogin(){
 			<a href="#"><span class="material-symbols-outlined">lock</span>로그인</a>
 			<a href="memberJoin.do"><span class="material-symbols-outlined">person_add</span>회원가입</a>		
 			<a href="helpDest.do"><span class="material-symbols-outlined">support_agent</span>고객센터</a>
-			<a href="adminStore.do">관리자페이지</a>
 		</div>		
 	</div>
 	<hr size="1px" color="#dcdcdc">
