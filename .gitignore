@@ -1,2 +1,9 @@
 .metadata/
+<<<<<<< HEAD
 Servers/
+=======
+Servers/
+Servers2/
+MANIFEST.MF
+pom.properties
+>>>>>>> dollhanminReal

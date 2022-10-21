@@ -100,7 +100,11 @@ function validate(){
 		window.alert('상세주소를 입력해주세요.');
 		return false;
 	}
+function memberIdCheck(){
+	var mem_id=document.memberJoinForm.mem_id.value;
+	location.href='memberIdCheck.do?id='+mem_id;
 }
+}	
 </script>
 </head>
 <body>
@@ -112,8 +116,8 @@ function validate(){
 		<table>
 			<tr>
 				<th>ID</th>
-				<td><input type="text" name="mem_id" id="idCheck" placeholder="사용할 ID를 설정하세요.">
-				<span class="setId">아이디는 4~12로 설정해주세요.</span>
+				<td><input type="text" name="mem_id" id="idCheck" placeholder="사용할 ID를 설정하세요." onChange="memberIdCheck()">
+				<input type="button" value="중복검사" onclick="memberIdCheckConfirm()">
 			</tr>
 			<tr>
 				<th>이름</th>
