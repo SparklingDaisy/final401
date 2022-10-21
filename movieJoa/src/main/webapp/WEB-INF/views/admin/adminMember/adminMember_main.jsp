@@ -11,6 +11,11 @@
 <style>
 .wrapper{
 	display:grid;
+	grid-template-columns: 400px 400px 400px;
+	grid-template-rows: 250px 250px;
+	margin:auto 0px;
+	width:80%;
+	text-align:right;
 }
 </style>
 </head>
@@ -18,11 +23,24 @@
 <c:import url="/WEB-INF/views/header_admin.jsp"></c:import>
 <c:import url="/WEB-INF/views/admin/adminMember/adminMember_sideBar.jsp"></c:import>
 <div class="wrapper">
-	<div>
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-	</div>
+		<div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+  			<div class="card-header">총 회원 수</div>
+  				<div class="card-body">
+    				<h5 class="card-title">${memberAllcount }명</h5>
+ 				</div>
+			</div>
+		<div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+ 			 <div class="card-header">오늘 가입한 회원 수</div>
+ 				 <div class="card-body">
+   					 <h5 class="card-title">${currentMemberJoin }명</h5>
+  			</div>
+		</div>
+		<div class="card text-bg-success mb-3" style="max-width: 18rem;">
+  			<div class="card-header">등록된 관리자 수</div>
+  				<div class="card-body">
+    			<h5 class="card-title">${adminAllCount }명</h5>
+  			</div>
+		</div>
 	<div>
 		<div>4</div>
 		<div>5</div>

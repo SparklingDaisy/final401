@@ -11,7 +11,7 @@ function openLogin(){
 <header>
 	<div class="nav">
 		<div class="logo">
-			<a href="index.do"><h1>MJOA manage</h1></a>
+			<a href="adminLogout.do"><h1>MJOA manage</h1></a>
 		</div>
 		<div class="nav_menu">
 			<a href="adminLogout.do"><span class="material-symbols-outlined">account_circle</span>사용자 페이지</a>
