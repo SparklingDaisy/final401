@@ -82,7 +82,6 @@
 		<li><a href="adminNotice.do">공지게시판</a></li>
 		<li><a href="adminEmailHelp.do">이메일문의</a></li>
 		<li><a href="memberHelp.do">1:1문의</a></li>
-		<li><a href="topAdmin.do">지점관리자 답변내역</a></li>
 	</ul>
 </div>
 </form>

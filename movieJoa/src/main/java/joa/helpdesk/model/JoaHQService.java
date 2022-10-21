@@ -43,11 +43,4 @@ public interface JoaHQService {
 	
 	public int serchQuestionTotalCnt(String state, String hqt_type, String hqt_region, String hqt_cinema);
 	
-	public List<JoaHelpQuestionDTO> topQuestionTypeList(String hqt_type,int cp, int ls);
-	
-	public int topQuestionTypeTotalCnt(String hqt_type);
-	
-	public List<JoaHelpQuestionDTO> topSerchQuestionList(String hqt_type, String hqt_region, String hqt_cinema, String hqt_state, int cp, int ls);
-	
-	public int topSerchQuestionTotalCnt(String hqt_type, String hqt_region, String hqt_cinema, String hqt_state);
 }

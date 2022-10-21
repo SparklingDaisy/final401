@@ -141,28 +141,4 @@ public class JoaHelpQuestionDAOImple implements JoaHelpQuestionDAO {
 		int count = sqlMap.selectOne("topQuestionTotalCnt");
 		return count;
 	}
-	
-	@Override
-	public List<JoaHelpQuestionDTO> topQuestionTypeList(Map map) {
-		List<JoaHelpQuestionDTO> list = sqlMap.selectList("topQuestionTypeList",map);
-		return list;
-	}
-	
-	@Override
-	public int topQuestionTypeTotalCnt(String hqt_type) {
-		int count = sqlMap.selectOne("topQuestionTypeTotalCnt",hqt_type);
-		return count;
-	}
-	
-	@Override
-	public List<JoaHelpQuestionDTO> topSerchQuestionList(Map map) {
-		List<JoaHelpQuestionDTO> list = sqlMap.selectList("topQuestionSerchList",map);
-		return list;
-	}
-	
-	@Override
-	public int topSerchQuestionTotalCnt(Map map) {
-		int count = sqlMap.selectOne("topQuestionSerchTotalCnt",map);
-		return count;
-	}
 }

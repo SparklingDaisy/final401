@@ -201,49 +201,4 @@ public class JoaHQServiceImple implements JoaHQService {
 		int count = JoaHelpQuestionDao.emailSerchTotalCnt(map);
 		return count;
 	}
-	
-	@Override
-	public List<JoaHelpQuestionDTO> topQuestionTypeList(String hqt_type, int cp, int ls) {
-		int start = (cp-1)*ls+1;
-		int end = cp*ls;
-		Map<String, Object> map = new HashMap<>();
-		map.put("hqt_type", hqt_type);
-		map.put("start", start);
-		map.put("end", end);
-		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.topQuestionTypeList(map);
-		return list;
-	}
-	
-	@Override
-	public int topQuestionTypeTotalCnt(String hqt_type) {
-		int count = JoaHelpQuestionDao.topQuestionTypeTotalCnt(hqt_type);
-		return count;
-	}
-	
-	@Override
-	public List<JoaHelpQuestionDTO> topSerchQuestionList(String hqt_type, String hqt_region, String hqt_cinema,
-			String hqt_state, int cp, int ls) {
-		int start = (cp-1)*ls+1;
-		int end = cp*ls;
-		Map<String, Object> map = new HashMap<>();
-		map.put("hqt_type", hqt_type);
-		map.put("hqt_region", hqt_region);
-		map.put("hqt_cinema", hqt_cinema);
-		map.put("hqt_state", hqt_state);
-		map.put("start", start);
-		map.put("end", end);
-		List<JoaHelpQuestionDTO> list = JoaHelpQuestionDao.topSerchQuestionList(map);
-		return list;
-	}
-	
-	@Override
-	public int topSerchQuestionTotalCnt(String hqt_type, String hqt_region, String hqt_cinema, String hqt_state) {
-		Map map = new HashMap();
-		map.put("hqt_type", hqt_type);
-		map.put("hqt_region", hqt_region);
-		map.put("hqt_cinema", hqt_cinema);
-		map.put("hqt_state", hqt_state);
-		int count = JoaHelpQuestionDao.topSerchQuestionTotalCnt(map);
-		return count;
-	}
 }

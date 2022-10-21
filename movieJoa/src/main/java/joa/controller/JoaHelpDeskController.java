@@ -790,7 +790,6 @@ public class JoaHelpDeskController {
 	
 	@RequestMapping("/topAdmin.do")
 	public ModelAndView topAdmin(@RequestParam(value =  "cp", defaultValue = "1")int cp) {
-		String backA_color = "background-color: #F05650";
 		
 		int totalCnt=joaHQService.topQuestionTotalCnt();
 		int listSize=5;	
@@ -799,119 +798,11 @@ public class JoaHelpDeskController {
 		
 		ModelAndView mav = new ModelAndView();
 		List<JoaHelpQuestionDTO>list = joaHQService.topQuestionList(cp, listSize); 
-		mav.addObject("backA_color", backA_color);
 		mav.addObject("pageStr", pageStr);
 		mav.addObject("list", list);
 		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMMemberHelp_TopAdmin");
 		return mav;
 	}
-	
-	@RequestMapping("/topAdminQuestionType.do")
-	public ModelAndView topAdminQuestionType(@RequestParam(value =  "cp", defaultValue = "1")int cp,@RequestParam(value="hqt_type", required = false)String hqt_type) {
-	
-	ModelAndView mav = new ModelAndView();
-	
-	if(hqt_type.equals("편의")) {
-		String backB_color = "background-color: #F05650";
-		mav.addObject("backB_color", backB_color);
-	}else if(hqt_type.equals("결제")) {
-		String backC_color = "background-color: #F05650";
-		mav.addObject("backC_color", backC_color);
-	}else if(hqt_type.equals("이벤트")) {
-		String backD_color = "background-color: #F05650";
-		mav.addObject("backD_color", backD_color);
-	}else if(hqt_type.equals("분실")) {
-		String backE_color = "background-color: #F05650";
-		mav.addObject("backE_color", backE_color);
-	}else if(hqt_type.equals("서비스")) {
-		String backF_color = "background-color: #F05650";
-		mav.addObject("backF_color", backF_color);
-	}
-	int totalCnt=joaHQService.topQuestionTypeTotalCnt(hqt_type);
-	int listSize=5;
-	int pageSize=5;
-	String pageStr=joa.page.Sub_PageModule.makePage("topAdminQuestionType.do?hqt_type="+hqt_type, totalCnt, listSize, pageSize, cp);
-	
-	List<JoaHelpQuestionDTO> list = joaHQService.topQuestionTypeList(hqt_type, cp, pageSize);
-	mav.addObject("pageStr", pageStr);
-	mav.addObject("list", list);
-	mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMMemberHelp_TopAdmin");
-	return mav;
-}
-	
-	@RequestMapping("/topAdminSerchList.do")
-	public ModelAndView topAdminSerchList(@RequestParam(value =  "cp", defaultValue = "1")int cp,@RequestParam(value="hqt_state", required = false)String hqt_state, @RequestParam(value="hqt_type", required = false)String hqt_type, @RequestParam(value="hqt_region", required = false)String hqt_region, @RequestParam(value="hqt_cinema", required = false)String hqt_cinema) {
-		ModelAndView mav = new ModelAndView();
-		String pagename=null;
-		if(hqt_type==null||hqt_type.equals("")) {
-			
-			String backA_color = "background-color: #F05650";
-			mav.addObject("backA_color", backA_color);
-			
-			hqt_type="hqt_type is not null";
-		}else{
-			
-			if(hqt_type.equals("편의")) {
-				String backB_color = "background-color: #F05650";
-				mav.addObject("backB_color", backB_color);
-			}else if(hqt_type.equals("결제")) {
-				String backC_color = "background-color: #F05650";
-				mav.addObject("backC_color", backC_color);
-			}else if(hqt_type.equals("이벤트")) {
-				String backD_color = "background-color: #F05650";
-				mav.addObject("backD_color", backD_color);
-			}else if(hqt_type.equals("분실")) {
-				String backE_color = "background-color: #F05650";
-				mav.addObject("backE_color", backE_color);
-			}else if(hqt_type.equals("서비스")) {
-				String backF_color = "background-color: #F05650";
-				mav.addObject("backF_color", backF_color);
-			}
-			
-			pagename="topAdminSerchList.do?hqt_type="+hqt_type;
-			hqt_type="hqt_type='"+hqt_type+"'";
-		}
-		if(hqt_region==null||hqt_region.equals("")||hqt_region.equals("지역선택")) {
-			hqt_region="hqt_region is not null";
-		}else {
-			
-			if(hqt_type.equals("hqt_type is not null")) {
-				pagename="topAdminSerchList.do?hqt_region="+hqt_region;
-			}else {
-				pagename+="&hqt_region="+hqt_region;
-			}
-			hqt_region="hqt_region='"+hqt_region+"'";
-		}
-		if(hqt_cinema==null||hqt_cinema.equals("")||hqt_cinema.equals("영화관선택")) {
-			hqt_cinema="hqt_cinema is not null";
-		}else {
-			pagename+="&hqt_cinema="+hqt_cinema;
-			hqt_cinema="hqt_cinema='"+hqt_cinema+"'";
-		}
-		if(hqt_state==null||hqt_state.equals("")) {
-			hqt_state="hqt_state is not null";
-		}else {
-			pagename+="&hqt_state="+hqt_state;
-			hqt_state="hqt_state='"+hqt_state+"'";
-		}
-		
-		int totalCnt=joaHQService.topSerchQuestionTotalCnt(hqt_type, hqt_region, hqt_cinema,hqt_state);
-		int listSize=5;
-		int pageSize=5;
-		String pageStr=null;
-		if(hqt_type.equals("hqt_type is not null") && hqt_region.equals("hqt_region is not null") && hqt_cinema.equals("hqt_cinema is not null") && hqt_state.equals("hqt_state is not null")) {
-			pageStr=joa.page.PageModule.makePage("topAdminSerchList.do", totalCnt, listSize, pageSize, cp);
-		}else {
-			pageStr=joa.page.Sub_PageModule.makePage(pagename, totalCnt, listSize, pageSize, cp);
-		}
-
-		List<JoaHelpQuestionDTO> list = joaHQService.topSerchQuestionList(hqt_type, hqt_region, hqt_cinema,hqt_state, cp, pageSize);
-		mav.addObject("pageStr", pageStr);
-		mav.addObject("list", list);
-		mav.setViewName("joaHelpDesk/adminHelp/joaHelpDek_ADMMemberHelp_TopAdmin");
-		return mav;
-	}	
-	
 	
 	@RequestMapping("/topAdminBorder.do")
 	public ModelAndView topAdminBorder(@RequestParam(value="idx",defaultValue = "1") int idx) {

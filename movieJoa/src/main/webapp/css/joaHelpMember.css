@@ -9,7 +9,7 @@
 	position: absolute;
 	top:0px;
 	float: left;
-	left: 20px;
+	left: 70px;
 	border: 0px; 
 	padding: 0px;
 	overflow: auto;
@@ -77,25 +77,4 @@
 	margin-left:3px;
 	line-height: 40px;
 	color:white;
-}
-.td_type{
-	width: 85px;
-}
-.td_subject{
-	width: 230px;
-}
-.td_state{
-	width: 95px;
-}
-.td_answerwrite{
-	width: 95px;
-}
-.td_region{
-	width: 95px;
-}
-.td_cinema{
-	width: 100px;
-}
-.td_subjectCL{
-	width: 420px;
 }
