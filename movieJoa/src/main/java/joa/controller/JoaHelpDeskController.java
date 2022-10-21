@@ -62,7 +62,7 @@ public class JoaHelpDeskController {
 		int totalCnt=joaMHService.manyHelpTypeTotalCnt(type);
 		int listSize=5;
 		int pageSize=5;
-		String pageStr=joa.page.Sub_PageModule.makePage("manyHelp.do", totalCnt, listSize, pageSize, cp);
+		String pageStr=joa.page.Sub_PageModule.makePage("serchManyHelp.do?type="+type, totalCnt, listSize, pageSize, cp);
 		List<JoaManyHelpDTO> list = joaMHService.manyHelpType(type, cp, listSize);
 		ModelAndView mav = new ModelAndView();
 

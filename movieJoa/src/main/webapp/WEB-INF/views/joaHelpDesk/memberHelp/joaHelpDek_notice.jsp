@@ -51,8 +51,14 @@
 				</tr>
 			</c:if>
 		<c:forEach var="dto" items="${list }">
+			<c:url var="noticeUrlCL" value="noticeBorder.do">
+					<c:param name="idx">
+					${dto.ntc_idx }
+					</c:param>
+			</c:url>
+			
 			<tr>
-				<td class="manyHelpBordertype">${dto.ntc_type }</td><td>${dto.ntc_subject }</td><td class="manyHelpBorderReadnum">${dto.ntc_readnum }</td>
+				<td class="manyHelpBordertype">${dto.ntc_type }</td><td><a href="${noticeUrlCL }">${dto.ntc_subject }</a></td><td class="manyHelpBorderReadnum">${dto.ntc_readnum }</td>
 			</tr>
 		</c:forEach>
 			</tbody>

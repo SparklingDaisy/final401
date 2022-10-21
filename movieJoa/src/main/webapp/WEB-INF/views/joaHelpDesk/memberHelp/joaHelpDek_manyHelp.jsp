@@ -18,7 +18,7 @@
 <div class="manyHelpMain">
 	<h4 class="manyHelpSubject">자주찾는 질문</h4>
 	<div class="manyHelpIntroduce">회원님들께서 가장 자주하시는 질문을 모았습니다.<br>
-	궁금하신 내용에 대해 검색해보세요</div>
+	궁금하신 내용에 대해 검색해보세요.</div>
 	<br>
 	<form name="manyHelpSerchFM" action="manyHelpSerch.do">
 	<div class="manyHelpSerch"><input class="serchbar" type="text" name="keyword">&nbsp;<input class="button" type="submit" value="검색하기">&nbsp;&nbsp;추천 검색어 | 현금영수증 | 관람권 | 결제 | 예매</div>
@@ -55,8 +55,15 @@
 				</tr>
 			</c:if>
 		<c:forEach var="dto" items="${list }">
+			
+			<c:url var="manyHelpUrlCL" value="manyHelpBorder.do">
+					<c:param name="idx">
+					${dto.lfq_idx }
+					</c:param>
+			</c:url>
+			
 			<tr>
-				<td class="manyHelpBordertype">${dto.lfq_type }</td><td>${dto.lfq_subject }</td><td class="manyHelpBorderReadnum">${dto.lfq_readnum }</td>
+				<td class="manyHelpBordertype">${dto.lfq_type }</td><td><a href="${manyHelpUrlCL}">${dto.lfq_subject }</a></td><td class="manyHelpBorderReadnum">${dto.lfq_readnum }</td>
 			</tr>
 		</c:forEach>
 			</tbody>
