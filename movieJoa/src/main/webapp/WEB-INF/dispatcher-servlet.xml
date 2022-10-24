@@ -129,6 +129,12 @@
             <ref bean="sqlSessionTemplate"/>
          </constructor-arg>
       </bean>
+      
+   <bean id="JoaMypageDao" class="joa.mypage.model.JoaMypageDAOImple">
+         <constructor-arg>
+            <ref bean="sqlSessionTemplate"/>
+         </constructor-arg>
+      </bean>
    
    <!-- services -->
    <bean id="adminMovieService" class="joa.adminMovie.model.AdminMovieServiceImple">
@@ -188,7 +194,6 @@
 		</constructor-arg>
    </bean>
    
-   
    <!-- services -->
    <bean id="JoaHQService" class="joa.helpdesk.model.JoaHQServiceImple">
 		<constructor-arg>
@@ -205,6 +210,12 @@
 	<bean id="JoaNTService" class="joa.helpdesk.model.JoaNTServiceImple">
 		<constructor-arg>
 			<ref bean="JoaNoticeDao"></ref>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="JoaMypageService" class="joa.mypage.model.JoaMypageServiceImple">
+		<constructor-arg>
+			<ref bean="JoaMypageDao"></ref>
 		</constructor-arg>
 	</bean>
    
