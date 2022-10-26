@@ -4,7 +4,7 @@
 <c:if test="${empty check }">
 	<script>
 	window.alert('${msg}');
-	location.href='theaterList.do';
+	location.href='scheduleList.do';
 	</script>
 </c:if>
 <c:if test="${not empty check }">
