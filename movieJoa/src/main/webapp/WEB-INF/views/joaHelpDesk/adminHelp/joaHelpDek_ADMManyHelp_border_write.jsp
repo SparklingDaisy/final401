@@ -15,6 +15,7 @@
 <br>
 <section>
 <c:import url="../../header_admin.jsp"></c:import>
+	<form action="manyBorderWrite.do">
 <div class="helpDesk_main">
 <div class="manyHelpMain">
 	<h4 class="manyHelpSubject">자주찾는 질문 - 게시글 작성</h4> <div align="right"><input type="submit" value="게시글 작성" class="writebutton" ></div>

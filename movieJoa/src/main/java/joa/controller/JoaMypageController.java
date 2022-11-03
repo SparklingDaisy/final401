@@ -1179,6 +1179,29 @@ public class JoaMypageController {
 		mav.setViewName("joaMyPage/joa_Mypage_msg");
 		return mav;
 	}
+	
+	@RequestMapping("/updateProfile.do")
+	public ModelAndView updateProfile(@RequestParam("pro_nickname")String pro_nickname,@RequestParam("img")MultipartFile img, HttpServletRequest req, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		JoaMemberDTO login_dto=(JoaMemberDTO) session.getAttribute("userInfo");
+		String pro_id=login_dto.getMem_id();
+		String path=req.getRealPath("img/joaPofiel_img/");
+		String filename=img.getOriginalFilename();
+		File f=new File(path+filename);	
+		copyInto(f, img);
+		JoaMypageProfileDTO dto = null;
+		dto.setPro_id(pro_id);
+		dto.setPro_image(filename);
+		dto.setPro_nickname(pro_nickname);
+		int result = JoaMypageService.updateProfile(dto);
+		String msg=result>0?"프로필 수정 성공":"프로필 수정 실패";
+		boolean link_tf=true;
+		
+		mav.addObject("msg", msg);
+		mav.addObject("link_tf", link_tf);
+		mav.setViewName("joaMyPage/joa_Mypage_msg");
+		return mav;
+	}
 
 	@RequestMapping("/self_ATNTCN.do")
 	public ModelAndView self_ATNTCN() {

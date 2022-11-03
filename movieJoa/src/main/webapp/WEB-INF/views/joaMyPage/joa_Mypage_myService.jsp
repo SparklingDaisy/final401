@@ -112,11 +112,14 @@
 				</c:url>
 					<tr>
 						<td>${S_dto.hqt_type }</td>
-						<c:if test="${S_dto.hqt_state eq '재답변' }">
+						<c:if test="${S_dto.hqt_state eq '미답변' }">
 						<td>${S_dto.hqt_subject }</td>
 						</c:if>
-						<c:if test="${S_dto.hqt_state eq '답변완료' }">
+						<c:if test="${S_dto.hqt_state eq '답변완료'  }">
 						<td><a href="${borderUrl }">${S_dto.hqt_subject }</a></td>
+						</c:if>
+						<c:if test="${S_dto.hqt_state eq '재답변'  }">
+						<td>${S_dto.hqt_subject }</td>
 						</c:if>
 						<td>${S_dto.hqt_state }</td>
 						<td>${S_dto.hqt_answerdate }</td>

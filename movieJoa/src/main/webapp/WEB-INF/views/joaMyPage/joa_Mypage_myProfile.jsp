@@ -155,26 +155,27 @@ function validate(){
 		
 		<div class="joaMypage_ti">
 			<div class="tiket_subject">개인정보변경</div>
-			<form name="pro_FM" action="upDateProfile.do" onsubmit="return validate();"></form>
-			<div class="p_button1"><input type="button" value="변경하기" id="p_button1_b" onclick="inputs()"></div>
+			
 			<br>
 			<div class="my_ticet">
 			<hr class="ti_hr">
 			<div class="P_title">이름</div><div class="p_content1"><input type="text" id="name" name="mem_name" class="p_content" value="${dto.mem_name }" readonly></div>
 			<hr class="ti_hr">
-			<div class="P_title">비밀번호 변경</div><div class="p_content1"><input type="password" name="mem_pwd" id="pwd1" onchange="isTrue()" readonly class="p_content"></div>
-			<hr class="ti_hr">
-			<div class="P_title">비밀번호 확인</div><div class="p_content1"><input type="password" name="mem_pwd_check" id="pwd2" onchange="isTrue()" readonly class="p_content">
-				<span class="span" id="checkpwd"></span><e>비밀번호는 4~12자의 영문,숫자,특수기호 조합으로만 입력해주세요.</e></div>
-			<hr class="ti_hr">
 			<div class="P_title">연락처</div>
-			<div class="p_content4"><input type="text" name="mem_tel" placeholder="(-)생략" id="tel"readonly class="p_content"></div>
+			<div class="p_content4"><input type="text" name="mem_tel" placeholder="(-)생략" id="tel"readonly class="p_content" value="${dto.mem_tel }" ></div>
 			<hr class="ti_hr">
 			<div class="P_title">E-mail</div><div class="p_content0"><input type="text" name="mem_email" value="${dto.mem_email }" id="email" readonly class="p_content">
 			</div>
 			<hr class="ti_hr">
-			<div class="p_button2"><input type="button" value="변경완료" id="p_button2_b"></div>
 			<hr class="ti_hr">
+			<div class="P_title">나의 등급포인트</div><div class="p_content0"><input type="text" name="mem_grade" value="${dto.mem_grade }" id="email" readonly class="p_content">
+			</div>
+			<hr class="ti_hr">
+			<hr class="ti_hr">
+			<div class="P_title">생성날짜</div><div class="p_content0"><input type="text" name="mem_grade" value="${dto.mem_joindate }" id="email" readonly class="p_content">
+			</div>
+			<hr class="ti_hr">
+			
 			</div>
 			</div>
 		</div>
